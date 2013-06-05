@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+        <layout title="COM_SITEMAIN_UPLOAD_VIEW_DEFAULT_TITLE">
+                <message>
+                        <![CDATA[COM_SITEMAIN_UPLOAD_VIEW_DEFAULT_DESC]]>
+                </message>
+        </layout>
+        <fields
+                name="request"
+                addfieldpath="/components/com_sitemain/models/fields"
+        >
+                <fieldset name="request">
+                        <field
+                                name="id"
+                                type="sitemain"
+                                label="COM_SITEMAIN_SITEMAIN_FIELD_CATEGORY_LABEL"
+                                description="COM_SITEMAIN_SITEMAIN_FIELD_CATEGORY_DESC"
+                        />
+                </fieldset>
+        </fields>
+</metadata>

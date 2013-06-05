@@ -1,0 +1,10 @@
+# No need this file for OpenCart >=1.5.3.1
+# 1. Edit  your  root_joomla_directory/.htaccess.txt file.Copy the below  three lines of code in the top of that file
+# For any support issues please visit: http://www.soft-php.com
+# @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
+####################################################################
+## You can change the "shop" keyword (your shop seo keyword) as you want.In that case you need to change the shop seo keyword from jCart adminpanel.
+RewriteEngine On
+RewriteRule ^([^?]*)shop\/([^?]*) index.php?option=com_opencart&_route_=$2 [L,QSA]
+RewriteRule sitemap.xml /index.php?option=com_opencart&tmpl=component&route=feed/google_sitemap
+####################################################################

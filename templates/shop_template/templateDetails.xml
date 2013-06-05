@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.0.2" type="template">
+        <name>shoptemplate</name>
+        <creationDate>2013-01-01</creationDate>
+        <author>Fanglu Jiang</author>
+        <authorEmail>jiangfanglu@hotmail.com</authorEmail>
+        <authorUrl></authorUrl>
+        <copyright>Fanglu Jiang 2012</copyright>
+        <license>GNU/GPL</license>
+        <version>1.0.2</version>
+        <description>Template for shop</description>
+        <files>
+                <filename>index.php</filename>
+                <filename>templateDetails.xml</filename>
+                <folder>images</folder>
+                <folder>css</folder>
+        </files>
+        <positions>
+                <position>breadcrumb</position>
+                <position>position-1</position>
+                <position>position-2</position>
+                <position>position-3</position>
+                <position>position-4</position>
+                <position>position-5</position>
+                <position>position-6</position>
+                <position>position-7</position>
+                <position>position-8</position>
+                <position>position-9</position>
+                <position>position-10</position>
+                <position>position-11</position>
+                <position>search-small</position>
+                <position>photoupload</position>
+                <position>left</position>
+                <position>right</position>
+                <position>top</position>
+                <position>user1</position>
+                <position>user2</position>
+                <position>user3</position>
+                <position>user4</position>
+                <position>footer</position>
+                <position>customfooter</position>
+        </positions>
+        <languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.tpl_shop.ini</language>
+		<language tag="en-GB">en-GB/en-GB.tpl_shop.sys.ini</language>
+	</languages>
+        <config>
+		<fields name="params">
+                    <fieldset name="advanced">
+                        <field name="logo" type="media"
+					label="TPL_SHOP_TEMPLATE_FIELD_LOGO_LABEL" description="TPL_SHOP_TEMPLATE_FIELD_LOGO_DESC" />
+                        <field name="backgroundcolor" type="color" default="#eee"
+					label="TPL_SHOP_TEMPLATE_FIELD_HEADER_BACKGROUND_COLOR_LABEL"
+					description="TPL_SHOP_TEMPLATE_FIELD_HEADER_BACKGROUND_COLOR_DESC" />
+                    </fieldset>
+                </fields>
+        </config>
+</extension>

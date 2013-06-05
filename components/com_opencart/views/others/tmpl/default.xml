@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_OPENCART_OTHERS">
+		<message>COM_OPENCART_OTHERS</message>
+	</layout>
+	<state>
+		<name>COM_OPENCART_OTHERS</name>
+		<description>COM_OPENCART_OTHERS_DESC</description>
+		<params>
+			<param name="route" type="text" default="" label="COM_OPENCART_ROUTE" description="COM_OPENCART_ROUTE_DESC"/>				
+		</params>
+		<fields name="params">
+			<!-- Basic options. -->
+			<fieldset name="basic">	
+				<field name="route" type="text" default="" description="COM_OPENCART_ROUTE_DESC" label="COM_OPENCART_ROUTE"	/>
+			</fieldset>
+		</fields>			
+	</state>
+</metadata>

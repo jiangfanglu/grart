@@ -1,0 +1,51 @@
+/* God I hate Microsoft! */
+#header_ext #cart {
+	width: 400px;
+}
+#header_ext #cart .heading {
+	position: relative;
+	right: 172px;
+	margin-right: 0px;
+}
+#header_ext #cart .content {
+	
+}
+#header_ext #search {
+	position: inherit;
+	float: right;
+}
+#header_ext .button-search {
+	top: 1px;
+}
+#header_ext #search input {
+	padding: 3px 1px 1px 33px;
+	height: 19px;
+}
+/* menu */
+#menu_ext ul li {
+	position: relative;
+}
+#menu_ext ul li div {
+	z-index: 5;
+}
+#menu_ext ul li.active div {
+	display: block;
+}
+.success, .warning, .attention, .information {
+	position: relative;
+}
+.success .close, .warning .close, .attention .close, .information .close {
+	position: absolute;
+	right: 10px;
+}
+.box-product > div {
+	display: inline;
+}
+.product-grid > div {
+	display: inline;
+}
+/* button */
+.product-info a.button span {
+	line-height: 12px;
+	display: block;
+}

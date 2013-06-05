@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension
+	type="module"
+	version="3.0"
+	client="site"
+	method="upgrade">
+	<name>User Status</name>
+	<author>Fanglu Jiang</author>
+	<creationDate>Feb 2013</creationDate>
+	<copyright>Copyright (C) 2013 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>jiangfanglu@hotmail.com</authorEmail>
+	<authorUrl></authorUrl>
+	<version>1.0.0</version>
+	<description>Display LOGIN and SIGNUP facility when no user session. Display PROFILE when user logged in</description>
+	<files>
+		<filename module="mod_user_status">mod_user_status.php</filename>
+                <filename>mod_user_status.xml</filename>
+		<filename>index.html</filename>
+                <filename>helper.php</filename>
+                <folder>tmpl</folder>
+	</files>
+        <languages>
+		<language tag="en-GB">en-GB.mod_user_status.ini</language>
+	</languages>
+</extension>

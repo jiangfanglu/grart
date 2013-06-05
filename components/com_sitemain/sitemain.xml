@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.0" method="upgrade">
+	<name>com_sitemain</name>
+	<author>Jiang Fanglu</author>
+	<creationDate>Februry 2013</creationDate>
+	<copyright>(C) 2005 - 2013 Open Source Matters. All rights reserved.	</copyright>
+	<license>GNU General Public License version 2 or later; see	LICENSE.txt</license>
+	<authorEmail>jiangfanglu@hotmail.com</authorEmail>
+	<authorUrl></authorUrl>
+	<version>0.0.7</version>
+	<description>Gather most of the functions of the site</description>
+        <install> <!-- Runs on install -->
+                <sql>
+                        <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+                </sql>
+        </install>
+        <uninstall> <!-- Runs on uninstall -->
+                <sql>
+                        <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+                </sql>
+        </uninstall>
+        <update> <!-- Runs on update; New in 2.5 -->
+                <schemas>
+                        <schemapath type="mysql">sql/updates/mysql</schemapath>
+                </schemas>
+        </update>
+	<files folder="site">
+		<filename>index.html</filename>
+		<filename>gallery_main.php</filename>
+                <filename>controller.php</filename>
+                <folder>views</folder>
+                <folder>models</folder>
+	</files>
+        <params>
+		<param name="view" type="filelist" directory="/components/com_sitemain/views" hide_none="1" hide_default="0" filter="." default="0" label="View Style" description="The view style for display" />
+	</params>
+        <administration>
+                <files folder="admin">
+                        <filename>controller.php</filename>
+			<filename>index.html</filename>
+                        <filename>sitemain.php</filename>
+                        <folder>sql</folder>
+		</files>
+        </administration>
+</extension>

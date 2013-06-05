@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.0" method="upgrade">
+	<name>Facebook All</name>
+	<license>Open Source License, GPL v2 based</license>
+	<author>sourceaddons</author>
+	<authorEmail>sourceaddons@ymail.com</authorEmail>
+	<authorUrl>http://www.sourceaddons.com</authorUrl>
+	<creationDate>2013-02-05</creationDate>
+	<copyright>2013, sourceaddons</copyright>
+	<version>1.1</version>
+	<description><![CDATA[A Facebook login social plugin!.]]>
+	</description>
+
+	<!-- Installation -->	
+	<scriptfile>install/script_facebookall.php</scriptfile>
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">install/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<uninstall>
+		<sql>
+			<file driver="mysql" charset="utf8">install/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+	
+	<!-- Component -->
+	<files folder="site">				
+		<filename>index.html</filename>
+		<filename>facebookall.php</filename>
+	</files>
+	<media destination="com_facebookall" folder="media">
+		<filename>index.html</filename>
+		<folder>images</folder>
+		<folder>js</folder>
+	</media>
+
+	<!-- Administration -->
+	<administration>
+		<menu img="../media/com_facebookall/images/fball_favicon.png">COM_FACEBOOKALL</menu>
+		<submenu>
+					<menu view="facebookall" img="components/com_facebookall/assets/img/config.png">COM_FACEBOOKALL_CONFIG</menu>
+					<menu view="users" img="components/com_facebookall/assets/img/user.png">COM_FACEBOOKALL_CONNECTED_USERS</menu>
+		</submenu>
+		<files folder="admin">
+			<folder>assets</folder>
+			<folder>helpers</folder>
+			<folder>install</folder>
+			<folder>models</folder>
+			<folder>views</folder>
+			<file>index.html</file>
+			<file>controller.php</file>
+			<file>facebookall.php</file>
+		</files>
+		<languages folder="admin/language">
+			    <language tag="en-GB">en-GB/en-GB.com_facebookall.ini</language>
+		        <language tag="en-GB">en-GB/en-GB.com_facebookall.sys.ini</language>
+		</languages>
+	</administration>	
+	<languages folder="language">
+	            <language tag="en-GB">en-GB/en-GB.mod_facebookall_login.ini</language>
+				<language tag="en-GB">en-GB/en-GB.mod_facebookall_login.sys.ini</language>
+	</languages>
+	<!-- Modules -->
+	<modules>
+		<module module="mod_facebookall_login" title="FacebookAll Login" position="position-7" order="8" client="site" language="*" showtitle="1">
+			<files folder="mod_facebookall_login">
+	            <filename>mod_facebookall_login.xml</filename>
+                <filename module="mod_facebookall_login">mod_facebookall_login.php</filename>
+	            <filename module="mod_facebookall_login">helper.php</filename>
+	            <filename module="mod_facebookall_login">index.html</filename>
+	            <filename module="mod_facebookall_login">tmpl/default.php</filename>
+	            <filename module="mod_facebookall_login">tmpl/index.html</filename>
+		    </files>
+	    </module>
+	</modules>	
+
+	<!-- Plugins -->
+	<plugins>
+		<plugin plugin="facebookalllogin" title="System - Facebookall Login" order="-100" group="system">
+			<files folder="plg_facebookalllogin">
+				<file plugin="facebookalllogin">facebookalllogin.php</file>
+		        <file>facebookalllogin_helper.php</file>
+				<file>facebookalllogin.xml</file>
+				<file>index.html</file>					
+			</files>
+		</plugin>
+	</plugins>	
+
+</extension>

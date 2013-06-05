@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_OPENCART_INFORMATION">
+		<message>COM_OPENCART_INFORMATION</message>
+	</layout>
+	<state>
+		<name>COM_OPENCART_INFORMATION</name>
+		<description>COM_OPENCART_INFORMATION_DESC</description>
+		<params>
+			<param name="information_id" type="text" default="" label="COM_OPENCART_INFORMATION_ID" description="COM_OPENCART_INFORMATION_ID"/>				
+		</params>
+		<fields name="params">
+			<!-- Basic options. -->
+			<fieldset name="basic">	
+				<field name="information_id" type="text" default="" description="COM_OPENCART_INFORMATION_ID" label="COM_OPENCART_INFORMATION_ID"	/>
+			</fieldset>
+		</fields>			
+	</state>
+</metadata>

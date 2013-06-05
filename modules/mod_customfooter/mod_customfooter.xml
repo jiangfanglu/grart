@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension
+	type="module"
+	version="3.0"
+	client="site"
+	method="upgrade">
+	<name>Custom Footer</name>
+	<author>Fanglu Jiang</author>
+	<creationDate>Feb 2013</creationDate>
+	<copyright>Copyright (C) 2013 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>jiangfanglu@hotmail.com</authorEmail>
+	<authorUrl></authorUrl>
+	<version>1.0.0</version>
+	<description>
+            The real footer
+        </description>
+	<files>
+		<filename module="mod_customfooter">mod_customfooter.php</filename>
+                <filename>mod_customfooter.xml</filename>
+		<filename>index.html</filename>
+                <filename>helper.php</filename>
+                <folder>tmpl</folder>
+	</files>
+        <languages>
+		<language tag="en-GB">en-GB.mod_customfooter.ini</language>
+	</languages>
+</extension>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>	
+	<params>				 
+		 	<param name="shopSeoKey" type="text" default="shop" label="COM_OPENCART_SEO_KEY_LABEL" description="COM_OPENCART_SEO_KEY_DESC"/>   
+			<param name="itemID" type="text" default="" label="COM_OPENCART_ITEMID_LABEL" description="COM_OPENCART_ITEMID_DESC"/>   
+			<param name="useJoomlaButton" type="radio" default="0" label="COM_OPENCART_USE_JOOMLA_BUTTON_LABEL" description="COM_OPENCART_USE_JOOMLA_BUTTON_DESC">
+			   <option value="1">Yes</option>
+			   <option value="0">No</option>		   
+			</param>  
+			<param name="dontShowHeaderjCart" type="list" default="0" label="COM_OPENCART_DONT_SHOW_HEADER_LABEL" description="COM_OPENCART_DONT_SHOW_HEADER_DESC">
+			   <option value="0">COM_OPENCART_DONT_SHOW_HEADER_ZERO</option>
+			   <option value="1">COM_OPENCART_DONT_SHOW_HEADER_ONE</option>
+			   <option value="2">COM_OPENCART_DONT_SHOW_HEADER_TWO</option>		   
+			</param>  
+			
+			<param name="dontShowFooterjCart" type="radio" default="0" label="COM_OPENCART_DONT_SHOW_FOOTER_LABEL" description="COM_OPENCART_DONT_SHOW_FOOTER_DESC">
+			   <option value="1">Yes</option>
+			   <option value="0">No</option>		   
+			</param>  
+			
+			<param name="dontShowMenusjCart" type="radio" default="1" label="COM_OPENCART_DONT_SHOW_MENUS_LABEL" description="COM_OPENCART_DONT_SHOW_MENUS_DESC">
+			   <option value="1">Yes</option>
+			   <option value="0">No</option>		   
+			</param>
+			
+			<param name="dontShowLogin" type="radio" default="0" label="COM_OPENCART_DONT_SHOW_ADMIN_LOGIN_LABEL" description="COM_OPENCART_DONT_SHOW_ADMIN_LOGIN_DESC">
+			   <option value="1">Yes</option>
+			   <option value="0">No</option>		   
+			</param>
+			
+			<param name="enableVqmodForjCart" type="radio" default="0" label="COM_OPENCART_ENABLE_VQMOD_JCART_LABEL" description="COM_OPENCART_ENABLE_VQMOD_JCART_DESC">
+			   <option value="1">Yes</option>
+			   <option value="0">No</option>		   
+			</param>
+			
+			<param name="enableVqmodUseCache" type="radio" default="0" label="COM_OPENCART_ENABLE_VQMOD_USECACHE_JCART_LABEL" description="COM_OPENCART_ENABLE_VQMOD_USECACHE_JCART_DESC">
+			   <option value="1">Yes</option>
+			   <option value="0">No</option>		   
+			</param>
+			
+			<param name="dontIncludejQueryLibrary" type="radio" default="0" label="COM_OPENCART_DISABLE_JQUERY_JCART_LABEL" description="COM_OPENCART_DISABLE_JQUERY_JCART_DESC">
+			   <option value="1">Yes</option>
+			   <option value="0">No</option>		   
+			</param>
+			
+			<param name="dontShowLeftRightColumn" type="radio" default="1" label="COM_OPENCART_DONTSHOW_LEFT_RIGHT_COLUMN_LABEL" description="COM_OPENCART_DONTSHOW_LEFT_RIGHT_COLUMN_DESC">
+			   <option value="1">Yes</option>
+			   <option value="0">No</option>		   
+			</param>
+			
+			<param name="enableMobileTheme" type="radio" default="1" label="COM_OPENCART_ENABLE_MOBILE_THEME_LABEL" description="COM_OPENCART_ENABLE_MOBILE_THEME_DESC">
+			   <option value="1">Yes</option>
+			   <option value="0">No</option>		   
+			</param>
+			
+			<param name="mainHttpServer" type="text" default="" label="COM_OPENCART_MAIN_HTTP_SERVER_LABEL" description="COM_OPENCART_MAIN_HTTP_SERVER_DESC"/>
+			<param name="redirectToMainHttpServer" type="radio" default="0" label="COM_OPENCART_REDIRECT_TO_MAIN_HTTP_LABEL" description="COM_OPENCART_REDIRECT_TO_MAIN_HTTP_DESC">
+			   <option value="1">Yes</option>
+			   <option value="0">No</option>		   
+			</param> 			
+			<param name="useJoomlaDB" type="radio" default="1" label="COM_OPENCART_USE_JOOMLADB_LABEL" description="COM_OPENCART_USE_JOOMLADB_DESC">
+			   <option value="1">Yes</option>
+			   <option value="0">No</option>		   
+			</param>  
+			<param name="dbuserName" type="text" default="" label="COM_OPENCART_FIELD_DATABASE_USERNAME_LABEL" description="COM_OPENCART_FIELD_DATABASE_USERNAME_DESC"/>   
+			<param name="dbuserPassword" type="text" default="" label="COM_OPENCART_FIELD_DATABASE_PASSWORD_LABEL" description="COM_OPENCART_FIELD_DATABASE_PASSWORD_DESC"/>   
+			<param name="dbuserHost" type="text" default="" label="COM_OPENCART_FIELD_DATABASE_HOST_LABEL" description="COM_OPENCART_FIELD_DATABASE_HOST_DESC"/>  				
+			<param name="dbName" type="text" default="" label="COM_OPENCART_FIELD_DATABASE_NAME_LABEL" description="COM_OPENCART_FIELD_DATABASE_NAME_DESC"/>  
+			<param name="dbuserPrefix" type="text" default="" label="COM_OPENCART_FIELD_DATABASE_PREFIX_LABEL" description="COM_OPENCART_FIELD_DATABASE_PREFIX_DESC"/>	
+			<param name="useCustomColor" type="radio" default="0" label="COM_OPENCART_USE_JCUSTOM_COLOR_LABEL" description="COM_OPENCART_USE_CUSTOM_COLOR_DESC">
+			   <option value="1">Yes</option>
+			   <option value="0">No</option>		   
+			</param>			
+			<param name="defaultTxtColor" type="text" class="color" default="999999" label="COM_OPENCART_DEFAULT_TXTCOLOR_LABEL" description="COM_OPENCART_DEFAULT_TXTCOLOR_DESC"/>
+			<param name="defaultButtonBoxColor" type="text" class="color" default="00A7E5" label="COM_OPENCART_DEFAULT_BUTTONBOX_COLOR_LABEL" description="COM_OPENCART_DEFAULT_BUTTONBOX_COLOR_DESC"/>
+			<param name="defaultButtonHoverColor" type="text" class="color" default="267799" label="COM_OPENCART_DEFAULT_BUTTON_HOVER_COLOR_LABEL" description="COM_OPENCART_DEFAULT_BUTTON_HOVER_COLOR_DESC"/>
+					
+			  
+	</params>
+	<fields name="params">
+		<fieldset  name="Preferences" description="" label="COM_OPENCART_PREFERENCES" extension="com_opencart">
+			<field name="shopSeoKey" type="text" default="shop" label="COM_OPENCART_SEO_KEY_LABEL" description="COM_OPENCART_SEO_KEY_DESC"/>   
+			<field name="itemID" type="text" default="" label="COM_OPENCART_ITEMID_LABEL" description="COM_OPENCART_ITEMID_DESC"/>   
+			<field name="useJoomlaButton" type="radio" default="0" label="COM_OPENCART_USE_JOOMLA_BUTTON_LABEL" description="COM_OPENCART_USE_JOOMLA_BUTTON_DESC">
+			   <option value="1">Yes</option>
+			   <option value="0">No</option>		   
+			</field>  
+			<field name="dontShowHeaderjCart" type="list" default="0" label="COM_OPENCART_DONT_SHOW_HEADER_LABEL" description="COM_OPENCART_DONT_SHOW_HEADER_DESC">
+			   <option value="0">COM_OPENCART_DONT_SHOW_HEADER_ZERO</option>
+			   <option value="1">COM_OPENCART_DONT_SHOW_HEADER_ONE</option>
+			   <option value="2">COM_OPENCART_DONT_SHOW_HEADER_TWO</option>	   		   
+			</field>  
+
+			<field name="dontShowFooterjCart" type="radio" default="0" label="COM_OPENCART_DONT_SHOW_FOOTER_LABEL" description="COM_OPENCART_DONT_SHOW_FOOTER_DESC">
+			   <option value="1">Yes</option>
+			   <option value="0">No</option>		   
+			</field>  
+
+			<field name="dontShowMenusjCart" type="radio" default="1" label="COM_OPENCART_DONT_SHOW_MENUS_LABEL" description="COM_OPENCART_DONT_SHOW_MENUS_DESC">
+			   <option value="1">Yes</option>
+			   <option value="0">No</option>		   
+			</field>
+
+			<field name="dontShowLogin" type="radio" default="0" label="COM_OPENCART_DONT_SHOW_ADMIN_LOGIN_LABEL" description="COM_OPENCART_DONT_SHOW_ADMIN_LOGIN_DESC">
+			   <option value="1">Yes</option>
+			   <option value="0">No</option>		   
+			</field>
+
+			<field name="enableVqmodForjCart" type="radio" default="0" label="COM_OPENCART_ENABLE_VQMOD_JCART_LABEL" description="COM_OPENCART_ENABLE_VQMOD_JCART_DESC">
+			   <option value="1">Yes</option>
+			   <option value="0">No</option>		   
+			</field>
+			
+			<field name="enableVqmodUseCache" type="radio" default="0" label="COM_OPENCART_ENABLE_VQMOD_USECACHE_JCART_LABEL" description="COM_OPENCART_ENABLE_VQMOD_USECACHE_JCART_DESC">
+			   <option value="1">Yes</option>
+			   <option value="0">No</option>		   
+			</field>			
+			
+			<field name="dontIncludejQueryLibrary" type="radio" default="0" label="COM_OPENCART_DISABLE_JQUERY_JCART_LABEL" description="COM_OPENCART_DISABLE_JQUERY_JCART_DESC">
+			   <option value="1">Yes</option>
+			   <option value="0">No</option>		   
+			</field>
+			
+			<field name="dontShowLeftRightColumn" type="radio" default="1" label="COM_OPENCART_DONTSHOW_LEFT_RIGHT_COLUMN_LABEL" description="COM_OPENCART_DONTSHOW_LEFT_RIGHT_COLUMN_DESC">
+			   <option value="1">Yes</option>
+			   <option value="0">No</option>		   
+			</field>
+			
+			<field name="enableMobileTheme" type="radio" default="1" label="COM_OPENCART_ENABLE_MOBILE_THEME_LABEL" description="COM_OPENCART_ENABLE_MOBILE_THEME_DESC">
+			   <option value="1">Yes</option>
+			   <option value="0">No</option>		   
+			</field>
+			
+			<field name="mainHttpServer" type="text" default="" label="COM_OPENCART_MAIN_HTTP_SERVER_LABEL" description="COM_OPENCART_MAIN_HTTP_SERVER_DESC"/>
+			<field name="redirectToMainHttpServer" type="radio" default="0" label="COM_OPENCART_REDIRECT_TO_MAIN_HTTP_LABEL" description="COM_OPENCART_REDIRECT_TO_MAIN_HTTP_DESC">
+			   <option value="1">Yes</option>
+			   <option value="0">No</option>		   
+			</field>
+			<field name="useJoomlaDB" type="radio" default="1" label="COM_OPENCART_USE_JOOMLADB_LABEL" description="COM_OPENCART_USE_JOOMLADB_DESC">
+			   <option value="1">Yes</option>
+			   <option value="0">No</option>		   
+			</field>  
+			<field name="dbuserName" type="text" default="" label="COM_OPENCART_FIELD_DATABASE_USERNAME_LABEL" description="COM_OPENCART_FIELD_DATABASE_USERNAME_DESC"/>   
+			<field name="dbuserPassword" type="text" default="" label="COM_OPENCART_FIELD_DATABASE_PASSWORD_LABEL" description="COM_OPENCART_FIELD_DATABASE_PASSWORD_DESC"/>   
+			<field name="dbuserHost" type="text" default="" label="COM_OPENCART_FIELD_DATABASE_HOST_LABEL" description="COM_OPENCART_FIELD_DATABASE_HOST_DESC"/>   	
+			<field name="dbName" type="text" default="" label="COM_OPENCART_FIELD_DATABASE_NAME_LABEL" description="COM_OPENCART_FIELD_DATABASE_NAME_DESC"/>  
+			<field name="dbuserPrefix" type="text" default="" label="COM_OPENCART_FIELD_DATABASE_PREFIX_LABEL" description="COM_OPENCART_FIELD_DATABASE_PREFIX_DESC"/> 
+			
+			<field name="useCustomColor" type="radio" default="0" label="COM_OPENCART_USE_JCUSTOM_COLOR_LABEL" description="COM_OPENCART_USE_CUSTOM_COLOR_DESC">
+			   <option value="1">Yes</option>
+			   <option value="0">No</option>		   
+			</field>			
+			<field name="defaultTxtColor" type="text" class="color" default="999999" label="COM_OPENCART_DEFAULT_TXTCOLOR_LABEL" description="COM_OPENCART_DEFAULT_TXTCOLOR_DESC"/>
+			<field name="defaultButtonBoxColor" type="text" class="color" default="00A7E5" label="COM_OPENCART_DEFAULT_BUTTONBOX_COLOR_LABEL" description="COM_OPENCART_DEFAULT_BUTTONBOX_COLOR_DESC"/>
+			<field name="defaultButtonHoverColor" type="text" class="color" default="267799" label="COM_OPENCART_DEFAULT_BUTTON_HOVER_COLOR_LABEL" description="COM_OPENCART_DEFAULT_BUTTON_HOVER_COLOR_DESC"/>
+			  
+		</fieldset>
+	</fields>
+	<fieldset name="permissions" label="JCONFIG_PERMISSIONS_LABEL"	description="JCONFIG_PERMISSIONS_DESC">
+		<field	name="rules" type="rules" label="JCONFIG_PERMISSIONS_LABEL" class="inputbox" validate="rules" filter="rules" component="com_opencart" section="component"/>
+	</fieldset>	
+</config>

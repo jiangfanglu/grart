@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.0" method="upgrade">
+	<name>com_grart</name>
+	<author>Theresa Mao</author>
+	<creationDate>April 2013</creationDate>
+	<copyright></copyright>
+	<license></license>
+	<authorEmail></authorEmail>
+	<authorUrl></authorUrl>
+	<version>3.0.0</version>
+	<description>COM_GRART_XML_DESCRIPTION</description>
+
+	
+	<administration>
+		<files folder="admin">
+			<filename>grart.php</filename>
+			<filename>controller.php</filename>
+			<filename>index.html</filename>
+			<folder>models</folder>
+			<folder>views</folder>
+		</files>
+	</administration>
+</extension>
+
+
