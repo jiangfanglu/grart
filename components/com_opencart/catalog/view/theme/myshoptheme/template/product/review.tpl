@@ -4,13 +4,13 @@
 
   <div class="author">
       <img src="<?php echo $review['thumb_url'] ?>" alt="<?php echo $review['author']; ?>" /><br/>
-      <b><?php echo $review['author']; ?></b><br/>
-      <span><?php echo $review['date_added']; ?></span>
   </div>
   <div class="text">
-      <div style="width:100%;min-height:55px;"><?php echo $review['text']; ?></div>
-      <div class="r_report"><a>Like</a> <a>Report</a></div>
-  
+      <b><?php echo $review['author']; ?></b><br/>
+      <div style="width:100%;margin:5px 0px 5px 0px;"><?php echo $review['text']; ?></div>
+      <div id="datetime"><?php echo date("M d, Y h:m",$review['date_added']); ?>
+<!--      - Like - Report-->
+      </div>
   </div>
   <div class="rating"><img src="catalog/view/theme/default/image/stars-<?php echo $review['rating'] . '.png'; ?>" alt="<?php echo $review['reviews']; ?>" /></div>
   

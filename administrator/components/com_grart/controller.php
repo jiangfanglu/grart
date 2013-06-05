@@ -38,4 +38,43 @@ class GrartController extends JControllerLegacy
         $model -> addProduct($data);
         JFactory::getApplication() ->redirect(JUri::base().'index.php?option=com_grart&view=artworkstoproducts');
     }
+    
+    public function sendEmails(){
+        $fileTemp = $_FILES['template']['tmp_name'];
+        $fileName = (string)time()."_".$_FILES['template']['name'];
+        $uploadPath = JPATH_ADMINISTRATOR.DS.'newsletters'.DS.$fileName;
+
+        if(!JFile::upload($fileTemp, $uploadPath)) 
+        {
+                echo JText::_( 'ERROR MOVING FILE' );
+                return;
+        }else{
+            $email_body = file_get_contents($uploadPath);
+            $model_ns =& $this ->getModel('Newsletter');
+            $subcribers = $model_ns -> getUserEmails(JRequest::getVar('user_group'));
+            $config =& JFactory::getConfig();
+            $sender = array( 
+                $config->get('mailfrom'),
+                $config->get( 'fromname' ) );
+            
+            $mailer = JFactory::getMailer();
+            $mailer->setSender($sender);
+            $mailer->isHTML(true);
+            $mailer->Encoding = 'base64';
+            $mailer->setSubject(JRequest::getVar('subject'));
+            
+            foreach($subcribers as $subcriber){
+                $recipient = $subcriber -> email;
+                $mailer->addRecipient($recipient);
+                $body = str_replace('[field:name]', $subcriber -> name, $email_body);
+                $mailer->setBody($body);
+                try{
+                    $mailer->Send();
+                }catch(Exception $e){
+                    echo $e->getMessage();
+                }
+            }
+            echo "OK";
+        }
+    }
 }

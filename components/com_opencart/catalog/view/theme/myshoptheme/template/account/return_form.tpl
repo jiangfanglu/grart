@@ -10,7 +10,7 @@
     <?php } ?>
   </div>
  <div class="box">
-  <div class="box-heading"><?php echo $heading_title; ?></div>
+  <h1><?php echo $heading_title; ?></h1>
   <div class="box-content">
   <?php echo $text_description; ?>
   <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">

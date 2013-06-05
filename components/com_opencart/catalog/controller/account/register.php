@@ -25,7 +25,7 @@ class ControllerAccountRegister extends Controller {
     	if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			$this->model_account_customer->addCustomer($this->request->post);
 			$this->customer->login($this->request->post['email'], $this->request->post['password']);
-			//$this -> sendRegistrationMail();
+			$this -> sendRegistrationMail($this->request->post['firstname'].' '.$this->request->post['lastname']);
 			unset($this->session->data['guest']);
 			
 			// Default Shipping Address
@@ -355,18 +355,21 @@ class ControllerAccountRegister extends Controller {
 		$this->response->setOutput($this->render());	
   	}
         
-        private function sendRegistrationMail(){
+        private function sendRegistrationMail($name){
             $config =& JFactory::getConfig();
             $sender = array( 
-                $config->getValue( 'config.mailfrom' ),
-                $config->getValue( 'config.fromname' ) );
-
+                $config->get('mailfrom'),
+                $config->get( 'fromname' ) );
+            
+            $mailer = JFactory::getMailer();
             $mailer->setSender($sender);
             $user =& JFactory::getUser();
-            $recipient = $user->email;
+            $recipient = JFactory::getUser()->email;
 
             $mailer->addRecipient($recipient);
             $body = file_get_contents(JPATH_BASE.DS.'templates'.DS.'shop_template'.DS.'email_templates'.DS.'registration.html');
+            $body = str_replace('[field:name]', $name, $body);
+            
             $mailer->isHTML(true);
             $mailer->Encoding = 'base64';
             // Optionally add embedded image
@@ -382,12 +385,6 @@ class ControllerAccountRegister extends Controller {
             }catch(Exception $e){
                 echo $e->getMessage();
             }
-            
-//            if ( $send !== true ) {
-//                echo 'Error sending email: ' . $send->message;
-//            } else {
-//                echo 'Mail sent';
-//            }
             
         }
 

@@ -18,7 +18,12 @@ function $(obj){
     return document.getElementById(obj);
 }
 
-
+function setCaptionText(text){
+    $('img_caption_text').innerHTML = text;
+}
+function setCaptionText_fixed(text){
+    $('img_caption_text_fixed').innerHTML = text;
+}
 
 
 function init_croping(x,y,width,height){
@@ -575,4 +580,26 @@ function showDesc(obj,status, text){
         obj.style.paddingTop = "0px";
     }
     obj.innerHTML = text;
+}
+
+function formFocus(obj, text,state){
+    if(state==1){
+        if (obj.value == text)
+        {
+            if(text=='Password' || text=='Retype Password'){
+                obj.type="password";
+            }
+            obj.value = "";
+            jQuery(obj).css('color','#2e2d2d');
+         }
+    }else{
+        if (obj.value == "")
+        {
+            if(text=='Password' || text=='Retype Password'){
+                obj.type="text";
+            }
+            obj.value = text;
+            jQuery(obj).css('color','#ccc');
+        }
+    }
 }

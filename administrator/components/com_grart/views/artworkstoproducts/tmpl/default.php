@@ -4,7 +4,9 @@ defined('_JEXEC') or die('Restricted access');
 <div id="header_ext">  
     <div id="menu_ext">
         <ul class="left sf-js-enabled" style="display: block;">
-<li id="dashboard" ><a href="<?php echo JURI::base() . 'index.php?option=com_grart&view=artworkstoproducts' ?>" class="top">APPROVE</a></li>
+                <li id="dashboard" ><a href="<?php echo JURI::base() . 'index.php?option=com_grart&view=artworkstoproducts' ?>" class="top">APPROVE</a></li>
+                                <li id="dashboard" ><a href="<?php echo JURI::base() . 'index.php?option=com_grart&view=newsletter' ?>" class="top">Newsletter</a></li>
+                <li id="dashboard" ><a href="<?php echo JURI::base() . 'index.php?option=com_grart&view=printoptions' ?>" class="top">Printing Options</a></li>
                 <li id="catalog" class="" class="selected"><a href="<?php echo JURI::base() . 'index.php?option=com_grart&view=editFeatured' ?>" class="top">Feature</a>
         </ul>
     </div>  

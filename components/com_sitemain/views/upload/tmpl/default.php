@@ -6,9 +6,8 @@ defined('_JEXEC') or die('Restricted access');
 <div class="container">
     
     <div class="form_heading">
-        Upload You Artwork(s) Here
+        Upload You Artwork
     </div>
-    <div class="divder_bg">&nbsp;</div>
     <div id="info_alert" class="alert alert-error" style="display: none;">
         <button type="button" class="close" data-dismiss="alert" onclick="return closeInfoAlert();">×</button>
         <b>Opps!</b> <span id="info_text">You best check yourself, you're not looking so good.</span>
@@ -18,9 +17,9 @@ defined('_JEXEC') or die('Restricted access');
         <!-- If uploading single file, 'task=uploadfile' It is outdated-->
         <form id="form1" onsubmit="return validateForm();" action="/index.php?option=com_sitemain&task=uploadmultiplefiles" method="post" enctype="multipart/form-data">
             <div class="form_line upload_width">
-                <div class="form_label upload_width">Title</div>
+                <div class="form_label upload_width"></div>
                 <div class="form_input">
-                    <input type="text" id="title" name="title" />
+                    <input type="text" id="title" name="title" value="Title" />
                 </div>
                 <div class="form_note"></div>
             </div>
@@ -39,9 +38,9 @@ defined('_JEXEC') or die('Restricted access');
                 <div class="form_note"></div>
             </div>
             <div class="form_line upload_width">
-                <div class="form_label upload_width">Tags</div>
+                <div class="form_label upload_width"></div>
                 <div class="form_input">
-                    <input type="text" id="tags" name="tags" />
+                    <input type="text" id="tags" name="tags" value="Tags" />
                 </div>
                 <div class="form_note">
                     Tags are separated by space(" ") and comma(,).
@@ -50,14 +49,14 @@ defined('_JEXEC') or die('Restricted access');
             
             
             <div class="form_line upload_width">
-                <div class="form_label upload_width">Meta Description</div>
+                <div class="form_label upload_width"></div>
                 <div class="form_input">
-                    <textarea id="meta_desc" name="meta_desc" row="3" col="50" maxlength="200" ></textarea>
+                    <textarea id="meta_desc" name="meta_desc" row="3" col="50" maxlength="200">Meta Description</textarea>
                 </div>
                 <div class="form_note">This is a short version of description. For promoting purpose. Maximum 200 characters.</div>
             </div>
             <div class="form_line upload_width">
-                <div class="form_label upload_width">Artwork Files</div>
+                <div class="form_label upload_width">Artwork Images</div>
                 <div class="form_input">
                     <!-- If uploading single file. It is outdated -->
                     <!-- <input type="file" id="Filedata" name="Filedata" /> -->
@@ -68,9 +67,9 @@ defined('_JEXEC') or die('Restricted access');
                 </div>
             </div>
             <div class="form_line upload_width">
-                <div class="form_label upload_width">Description</div>
+                <div class="form_label upload_width"></div>
                 <div class="form_input">
-                    <textarea id="desc" name="desc" row="10" col="50" ></textarea>
+                    <textarea id="desc" name="desc" row="10" col="50" >Description</textarea>
                 </div>
                 <div class="form_note"></div>
             </div>
@@ -79,10 +78,10 @@ defined('_JEXEC') or die('Restricted access');
                     
                 </div>
                 <div class="form_input" style="font-size:13px;">
-                    <input type="checkbox" id="terms_conds" name="terms_conds" />
+<!--                    <input type="checkbox" id="terms_conds" name="terms_conds" />
                     I agree the <a style="text-decoration: underline;" target="_blank" href="<?php echo JUri::base().'index.php?option=com_sitemain&view=articles&c_id=83&a_id=76' ?>">Terms and Conditions</a> 
-                    <br/><br/>
-                    <input type="submit" value="Upload Artwork" id="btnSubmit" class="submit_btn" />
+                    <br/><br/>-->
+                    <input type="submit" value="Upload" id="btnSubmit" class="submit_btn" />
                 </div>
                 <div class="form_note">
                     
@@ -91,7 +90,33 @@ defined('_JEXEC') or die('Restricted access');
             </div>
         </form>
     </div>
+    <script>
+           jQuery("#title").focus(function(){
+                formFocus(this, 'Title',1)
+            });
+            jQuery("#title").blur(function(){
+                formFocus(this, 'Title',0)
+            });
+            jQuery("#tags").focus(function(){
+                formFocus(this, 'Tags',1)
+            });
+            jQuery("#tags").blur(function(){
+                formFocus(this, 'Tags',0)
+            });
+            jQuery("#meta_desc").focus(function(){
+                formFocus(this, 'Meta Description',1)
+            });
+            jQuery("#meta_desc").blur(function(){
+                formFocus(this, 'Meta Description',0)
+            });
+            jQuery("#desc").focus(function(){
+                formFocus(this, 'Description',1)
+            });
+            jQuery("#desc").blur(function(){
+                formFocus(this, 'Description',0)
+            });
     
+    </script>
     <div class="explian_panel upload_panel">
         <div class="explain_heading">
             Good To Know

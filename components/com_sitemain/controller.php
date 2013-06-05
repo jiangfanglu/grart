@@ -32,9 +32,7 @@ class SitemainController extends JControllerLegacy
 
 
     public function test(){
-        $response = file_get_contents(JUri::base().'index.php?option=com_sitemain&view=artwork&format=raw&artwork_id=14');
-        //$response = file_get_contents(JPATH_BASE.DS.'templates'.DS.'shop_template'.DS.'email_templates'.DS.'registration.html');
-        echo $response;
+        echo JPATH_ADMINISTRATOR;
     }
     
     public function checkuser(){

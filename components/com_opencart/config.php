@@ -12,7 +12,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 //define('USE_JOOMLA_BUTTONS','0');
 //define('DONT_SHOW_HEADER_JCART','0');
 define('DONT_SHOW_FOOTER_JCART','1');
-//define('DONT_SHOW_MENUS_JCART','1');
+define('DONT_SHOW_MENUS_JCART','0');
 //define('ENABLE_VQMOD_JCART','0');
 //define('ENABLE_VQMOD_USECACHE','0');
 //define('SHOP_SEO_KEY','shop'); // don't change it,if you change it then you need to change shop keyword in .httaccess file also

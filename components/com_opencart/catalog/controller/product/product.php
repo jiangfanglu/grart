@@ -527,7 +527,7 @@ class ControllerProductProduct extends Controller {
 				'text'       => $result['text'],
 				'rating'     => (int)$result['rating'],
         		'reviews'    => sprintf($this->language->get('text_reviews'), (int)$review_total),
-        		'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
+        		'date_added' => strtotime($result['date_added']),
                     'thumb_url' => $thumb_path
         	);
       	}			

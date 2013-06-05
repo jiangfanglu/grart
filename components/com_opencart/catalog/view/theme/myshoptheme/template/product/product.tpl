@@ -122,6 +122,28 @@
                             </select>
                           </div>
                           <?php } ?>
+                          <?php if ($option['type'] == 'image') { ?>
+                            <div id="option-<?php echo $option['product_option_id']; ?>" class="option">
+                              <?php if ($option['required']) { ?>
+                              <span class="required">*</span>
+                              <?php } ?>
+                              <b><?php echo $option['name']; ?>:</b><br />
+                                <table class="option-image">
+                                  <?php foreach ($option['option_value'] as $option_value) { ?>
+                                  <tr>
+                                    <td style="width: 1px;"><input type="radio" name="option_ext[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" id="option-value-<?php echo $option_value['product_option_value_id']; ?>" /></td>
+                                    <td><label for="option-value-<?php echo $option_value['product_option_value_id']; ?>"><img src="<?php echo $option_value['image']; ?>" alt="<?php echo $option_value['name'] . ($option_value['price'] ? ' ' . $option_value['price_prefix'] . $option_value['price'] : ''); ?>" /></label></td>
+                                    <td><label for="option-value-<?php echo $option_value['product_option_value_id']; ?>"><?php echo $option_value['name']; ?>
+                                        <?php if ($option_value['price']) { ?>
+                                        (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
+                                        <?php } ?>
+                                      </label></td>
+                                  </tr>
+                                  <?php } ?>
+                                </table>
+                            </div>
+                            <br />
+                            <?php } ?>
                       <?php } ?>
                     </div>
                     <?php } ?>
@@ -129,7 +151,7 @@
             <div id="add_to_cart_btn">
                      <div class="cart">
                         <div><?php echo $text_qty; ?>
-                          <input type="text" name="quantity" size="2" value="<?php echo $minimum; ?>" style="width:30px!important;" />
+                          <input type="text" name="quantity" size="2" value="<?php echo $minimum; ?>" style="width:30px!important;padding:5px!important;" />
                           <input type="hidden" name="product_id" size="2" value="<?php echo $product_id; ?>" />
                           &nbsp;<input type="button" value="<?php echo $button_cart; ?>" id="button-cart" class="product-button" />
 

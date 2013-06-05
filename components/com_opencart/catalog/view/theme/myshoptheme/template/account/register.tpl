@@ -176,27 +176,7 @@
             jQuery("#rego_confirm").blur(function(){
                 formFocus(this, 'Retype Password',0)
             });
-            function formFocus(obj, text,state){
-            if(state==1){
-                if (obj.value == text)
-                {
-                    if(text=='Password' || text=='Retype Password'){
-                        obj.type="password";
-                    }
-                    obj.value = "";
-                    jQuery(obj).css('color','#2e2d2d');
-                 }
-            }else{
-                if (obj.value == "")
-                {
-                    if(text=='Password' || text=='Retype Password'){
-                        obj.type="text";
-                    }
-                    obj.value = text;
-                    jQuery(obj).css('color','#ccc');
-                }
-            }
-        }
+            
     </script>
     <div class="full_screen createaccount">
         <input type="submit" value="Create Account" class="product-button" />

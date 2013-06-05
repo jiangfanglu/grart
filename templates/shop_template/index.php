@@ -196,5 +196,13 @@ jQuery("#login_password").blur(function(){
                     <jdoc:include type="modules" name="footer" />
                 </div> 
     </div>
+<div id="img_caption">
+    <div id="img_caption_arrow"><img src="<?php echo JUri::base().'templates/shop_template/images/arrowup.png'?>" /></div>
+    <div id="img_caption_text">Artworks</div>
+</div>
+<div id="img_caption_fixed">
+    <div id="img_caption_arrow_fixed"><img src="<?php echo JUri::base().'templates/shop_template/images/arrowup.png'?>" /></div>
+    <div id="img_caption_text_fixed"></div>
+</div>
 </body>
 </html>

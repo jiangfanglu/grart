@@ -12,6 +12,9 @@ defined('_JEXEC') or die('Restricted access');
     <?php } ?>
         </ul>
 </div>-->
+<h1>
+    Information, Frequently Asked Questions, Guidelines, Tutorials and More
+</h1>
 <div style="width:100%;display:table;">
     <div class="article_left">
         <?php 
@@ -27,7 +30,7 @@ defined('_JEXEC') or die('Restricted access');
                     }
                     ?>
 
-        <div id="category_<?php echo (string)$c['category_id'] ?>" class="category_item <?php echo $active_class_c ?>"  onclick="showArticles('category_<?php echo (string)$c['category_id'] ?>','article_items_<?php echo (string)$c['category_id'] ?>')">
+        <div id="category_<?php echo (string)$c['category_id'] ?>" class="category_item <?php echo $active_class_c ?>" >
                         <?php echo $c['category_name'] ?>
         </div>
 
@@ -47,7 +50,11 @@ defined('_JEXEC') or die('Restricted access');
                     </div>
            <?php } ?>
         </div>
-
+<script>
+    jQuery('#category_<?php echo (string)$c['category_id'] ?>').click(function(){
+        jQuery('#article_items_<?php echo (string)$c['category_id'] ?>').slideToggle('fast');
+    });
+</script>
         <?php
             }
         ?>

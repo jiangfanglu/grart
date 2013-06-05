@@ -3,20 +3,15 @@
     <?php echo $column_left; ?>
   
   <div class="content" class="content_ext_width">
-      <div class="breadcrumb">
-    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
-    <?php } ?>
-  </div>
  <div class="box">
   <div class="box-content">
     <div id="search_criteria">
         <div class="search_filters">
                <?php echo $entry_search; ?>
                 <?php if ($filter_name) { ?>
-                <input type="text" class="inpuclass" name="filter_name" value="<?php echo $filter_name; ?>" style="width:185px!important;" />
+                <input type="text" class="inpuclass" name="filter_name" value="<?php echo $filter_name; ?>" style="width:165px!important;" />
                 <?php } else { ?>
-                <input type="text" class="inpuclass" name="filter_name" value="<?php echo $filter_name; ?>" style="width:185px!important;" onclick="this.value = '';" onkeydown="this.style.color = '000000'" style="color: #999;" />
+                <input type="text" class="inpuclass" name="filter_name" value="<?php echo $filter_name; ?>" style="width:165px!important;" onclick="this.value = '';" onkeydown="this.style.color = '000000'" style="color: #999;" />
                 <?php } ?>
 
 
@@ -64,7 +59,7 @@
           </div>
       </div>
         <div class="search_filters">
-               <div class="right"><input type="button" value="<?php echo $button_search; ?>" id="button-search" class="submit_btn" /></div>
+            <div class="right"><input style="margin-top:-10px!important;" type="button" value="<?php echo $button_search; ?>" id="button-search" class="product-button" /></div>
         </div>
     </div>
   </div>

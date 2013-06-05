@@ -247,9 +247,10 @@ div.logoo img{
 }
 .form_heading{
     font-size: 20px;
-    font-weight: bold;
     width:1020px;
+    font-size:22px;
     font-family: Oswald-Light;
+    border-bottom: 1px dotted #eee;
 }
 .form_body,
 .form_heading{
@@ -287,23 +288,27 @@ div.logoo img{
 }
 
 .form_body input[type='text']{
-    font-size:14px!important;
-    outline: none;
-    border:0px;
-    padding-left: 25px;
-    border-bottom: 1px solid #eee;
-    font-family: Georgia;
-    background: #fff;
-    background: url('/templates/shop_template/images/edit_icon_grey.gif') no-repeat left;
+    font-family: Calibri;
+    font-size:14px;
+    padding:10px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    border:1px solid #ccc;
+    background: #FCFCFC;
+    color:#ccc;
 }
 
 .form_body textarea{
-    background-color: #eee!important;
-    height:100px;
-    padding:5px!important;
-    border:0px;
-    font-size:12px!important;
-    font-family: Georgia;
+    font-family: Calibri;
+    font-size:14px;
+    padding:10px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    border:1px solid #ccc;
+    background: #FCFCFC;
+    color:#ccc;
 /*    -webkit-box-shadow: inset 0px 1px 2px 2px #ddd;
     box-shadow: inset 0px 1px 2px 2px #ddd;*/
     outline: none;
@@ -478,10 +483,11 @@ input[type='text'].artwork_widthedit{
     text-transform: uppercase;
 }
 #img_caption_text{
-    padding:5px;
+    padding:10px;
     background:url('../images/transbackground.png');
     color:#fff;
     font-size: 11px;
+    font-family: Calibri;
 }
 #img_caption{
     position: absolute;
@@ -489,6 +495,22 @@ input[type='text'].artwork_widthedit{
     display: none;
 }
 #img_caption_arrow{
+    text-align: center;
+    width:100%;
+}
+#img_caption_text_fixed{
+    padding:10px;
+    background:url('../images/transbackground.png');
+    color:#fff;
+    font-size: 11px;
+    font-family: Calibri;
+}
+#img_caption_fixed{
+    position: fixed;
+    color:#fff;
+    display: none;
+}
+#img_caption_arrow_fixed{
     text-align: center;
     width:100%;
 }
@@ -836,8 +858,19 @@ ul.user_status_btns{
     font-family: Calibri;
     
 }
+.user_status_btns li.userlinklir img{
+    float:right;
+    margin: 0 10px 0 0px;
+    width:16px;
+}
+.user_status_btns li.userlinkli img{
+    float: left;
+    margin: -3px 3px 0 0;
+    width:20px;
+}
 .user_status_btns li a{
     color:#000;
+    text-shadow: 1px 1px #fff;
 }
 .user_admin_container{
     width:715px;
@@ -1567,10 +1600,12 @@ button.close {
     float:left;
 }
 .explain_heading{
-    width:100%;
-    border-bottom: 1px dotted #eee;
-    font-style: italic;
-    color:#ccc;
+    width:90%;
+    border-bottom: 1px solid #eee;
+    font-family: Oswald-Light;
+    background: #f7f7f7;
+    color:#2e2d2d;
+    padding: 5%;
 }
 .explain_text{
     width:100%;
@@ -1680,6 +1715,7 @@ select.grart{
     margin: 0;
     overflow: hidden;
     padding: 8px;
+    font-size: 14px;
 }
 .content_line{
     padding:5px;

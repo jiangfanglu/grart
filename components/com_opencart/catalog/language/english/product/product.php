@@ -46,7 +46,7 @@ $_['entry_captcha']     = 'Well, we are anti-robots';
 // Tabs
 $_['tab_description']   = 'Description';
 $_['tab_attribute']     = 'Specification';
-$_['tab_review']        = 'Reviews (%s)';
+$_['tab_review']        = 'Comments on this Artwork (%s)';
 $_['tab_related']       = 'Related Products'; 
 
 // Error

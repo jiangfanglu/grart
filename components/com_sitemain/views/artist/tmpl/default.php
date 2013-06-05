@@ -330,9 +330,7 @@ if($this -> iffollowed){
 </div>
 
 <script>
-function setCaptionText(text){
-    $('img_caption_text').innerHTML = text;
-}
+
 $('main_follow_btn').addEvent('click',function(e){
          e.stop();
          if($('user_id').value == '0'){
@@ -382,8 +380,3 @@ $('main_follow_btn').addEvent('click',function(e){
                   'artist_id':$('artist_id').value  });
     });
 </script>
-
-<div id="img_caption">
-    <div id="img_caption_arrow"><img src="<?php echo JUri::base().'templates/shop_template/images/arrowup.png'?>" /></div>
-    <div id="img_caption_text">Artworks</div>
-</div>

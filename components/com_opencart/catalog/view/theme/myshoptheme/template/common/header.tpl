@@ -76,8 +76,41 @@ DD_belatedPNG.fix('#logo img');
   </div>
 </div>
 <?php } ?>
-<!--<?php if ($categories) { ?>
-<div id="menu" <?php if(DONT_SHOW_MENUS_JCART=="1"){?> style="display:none;" <?php }?>>
+<?php if ($categories) { ?>
+<div id="categories_breadcrumbs" <?php if(DONT_SHOW_MENUS_JCART=="1"){?> style="display:none;" <?php }?>>
+        <ul>
+        <?php foreach ($categories as $category){?>
+          <li>
+            <a href="<?php echo $category['href']; ?>" >
+                <?php echo strtoupper($category['name']);?>
+            </a>
+        <?php if ($category['children']) { ?>
+            <div>
+              <?php for ($i = 0; $i < count($category['children']);) { ?>
+              <ul>
+                <?php $j = $i + ceil(count($category['children']) / $category['column']); ?>
+                <?php for (; $i < $j; $i++) { ?>
+                <?php if (isset($category['children'][$i])) { ?>
+                <li><a href="<?php echo $category['children'][$i]['href']; ?>"><?php echo $category['children'][$i]['name']; ?></a></li>
+                <?php } ?>
+                <?php } ?>
+              </ul>
+              <?php } ?>
+            </div>
+        <?php } ?>
+        </li>
+            <li class="divider">|</li>
+        <?php } ?>
+            <li>
+                <a href="<?php echo JUri::base().'index.php?option=com_opencart' ?>">
+                    MORE
+                </a>
+            </li>
+            </ul>
+    </div>
+
+<!--<div id="menu" <?php if(DONT_SHOW_MENUS_JCART=="1"){?> style="display:none;" <?php }?>>
+
   <ul>
     <?php foreach ($categories as $category) { ?>
     <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a>
@@ -98,7 +131,7 @@ DD_belatedPNG.fix('#logo img');
     </li>
     <?php } ?>
   </ul>
-</div>
+</div>-->
 <?php } ?>
-<div id="notification"></div>-->
-    <div class="divder_bg_dynamic">&nbsp;</div>
+    
+<div id="notification"></div>
