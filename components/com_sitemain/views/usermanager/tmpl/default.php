@@ -86,6 +86,8 @@ $doc->addScriptDeclaration( $ajax );
                                         echo $this -> artist -> portfolio;
                                     }
 
+									
+									
                                             ?>
                                 </textarea>
                          </div>
