@@ -194,7 +194,9 @@ jimport('joomla.filesystem.folder');
 
 
 <div id="view_history">
+    
     <div id="vh_content">
+        <div id="view_close">X Close</div>
         <div class="heading">Viewed Products:</div>
         <div class="vh_list">
             <?php foreach($_SESSION['recent_products'] as $p){ ?>
@@ -270,6 +272,9 @@ jQuery('#main_login').click(function(){
 });
 jQuery('#close_button').click(function(){
     jQuery('#login_anywhere_out').fadeOut('slow');
+});
+jQuery('#view_close').click(function(){
+    jQuery('#view_history').fadeOut('slow');
 });
 jQuery('#login_anywhere_out').click(function(){
     var isHovered = jQuery('#login_anywhere_in').is(":hover");

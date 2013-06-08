@@ -80,25 +80,41 @@ DD_belatedPNG.fix('#logo img');
 <div id="categories_breadcrumbs" <?php if(DONT_SHOW_MENUS_JCART=="1"){?> style="display:none;" <?php }?>>
         <ul>
         <?php foreach ($categories as $category){?>
-          <li>
+          <li id="categorymenu_<?php echo $category['id']?>">
             <a href="<?php echo $category['href']; ?>" >
                 <?php echo strtoupper($category['name']);?>
             </a>
+          </li>
         <?php if ($category['children']) { ?>
-            <div>
+        <div id="subcategory_<?php echo $category['id']?>" class="subcategory">
+            <ul>
               <?php for ($i = 0; $i < count($category['children']);) { ?>
-              <ul>
+              
                 <?php $j = $i + ceil(count($category['children']) / $category['column']); ?>
                 <?php for (; $i < $j; $i++) { ?>
                 <?php if (isset($category['children'][$i])) { ?>
                 <li><a href="<?php echo $category['children'][$i]['href']; ?>"><?php echo $category['children'][$i]['name']; ?></a></li>
                 <?php } ?>
                 <?php } ?>
-              </ul>
+             
               <?php } ?>
+               </ul>
             </div>
+    <script>
+        jQuery("#categorymenu_<?php echo $category['id']?>").mouseenter(function(){
+            jQuery('.subcategory').css('display', 'none');
+            jQuery("#subcategory_<?php echo $category['id']?>").css('display', 'block');
+            position = jQuery("#categorymenu_<?php echo $category['id']?>").position();
+            //jQuery("#subcategory_<?php echo $category['id']?>").css('left', position.left);
+            setChildLeft(jQuery("#categorymenu_<?php echo $category['id']?>"),jQuery("#subcategory_<?php echo $category['id']?>"));
+            jQuery("#subcategory_<?php echo $category['id']?>").css('top', position.top+40);
+        });
+        jQuery("#subcategory_<?php echo $category['id']?>").mouseleave(function(){
+            jQuery("#subcategory_<?php echo $category['id']?>").css('display', 'none');
+        });
+    </script>
         <?php } ?>
-        </li>
+        
             <li class="divider">|</li>
         <?php } ?>
             <li>
@@ -108,7 +124,20 @@ DD_belatedPNG.fix('#logo img');
             </li>
             </ul>
     </div>
-
+  <script>
+     function setChildLeft(parent,child){
+        var child_width = child.outerWidth(false);
+        var parent_width = parent.outerWidth(false);
+        var parent_position = parent.position();
+        var page_positon = jQuery('.container-main').position();
+        var container_width = jQuery('#main_content').width();
+        if(child_width > parent_width && (parent_position.left + child_width) > (page_positon.left + container_width)){
+            child.css('left', page_positon.left + container_width - child_width);
+        }else{
+            child.css('left', parent_position.left);
+        }
+     } 
+  </script>
 <!--<div id="menu" <?php if(DONT_SHOW_MENUS_JCART=="1"){?> style="display:none;" <?php }?>>
 
   <ul>

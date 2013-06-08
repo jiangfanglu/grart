@@ -14,22 +14,40 @@ class SitemainModelMygallery extends JModelItem
     
     public $arwork_id = 0;
     
-    public function getOptions() {
-        //parent::getOptions();
-        
+ public function getOptions() {
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
-        $query = "SELECT cd.category_id as category_id, cd.name as name
-                FROM oc_category c 
-                LEFT JOIN oc_category_description cd 
-                ON (c.category_id = cd.category_id) 
-                LEFT JOIN oc_category_to_store c2s 
-                ON (c.category_id = c2s.category_id) 
-                WHERE c.parent_id = 0 AND c.status = '1' ORDER BY c.sort_order, LCASE(cd.name)";
+        $query = "SELECT * FROM oc_category c 
+            LEFT JOIN oc_category_description cd ON (c.category_id = cd.category_id) 
+            LEFT JOIN oc_category_to_store c2s ON (c.category_id = c2s.category_id) 
+            WHERE c.status = '1' ORDER BY c.sort_order, LCASE(cd.name)";
         $db->setQuery((string)$query);
         $categories = $db->loadObjectList();
         
-        return $categories;
+        $categories_arr = array();
+        $n=0;
+        foreach($categories as $c){
+            if($c->parent_id == 0){
+                $categories_arr[$n] = array(
+                    'parent' => $c,
+                    'children' => $this -> getCategoryArray($categories, $c)
+                );
+                $n++;
+            }
+        }
+        return $categories_arr;
+    }
+    
+    function getCategoryArray($categories, $parent){
+        $children = array();
+        $n=0;
+        foreach($categories as $c_tmp){
+            if($c_tmp->parent_id == $parent->category_id){
+                $children[$n] = $c_tmp;
+                $n++;
+            }
+        }
+        return $children;
     }
     
     public function getArworkId(){

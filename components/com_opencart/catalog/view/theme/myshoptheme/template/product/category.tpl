@@ -1,10 +1,10 @@
 <?php echo $header; ?>
 <div id="content">
     
-    <div class="cm_content_left">
-        <?php echo $column_left; ?>
+<!--    <div class="cm_content_left">
+        <?php //echo $column_left; ?>
     </div>
-    <div class="cm_content_main">
+    <div class="cm_content_main">-->
 <!--        <?php echo $content_top; ?>
         <h1><?php echo $heading_title; ?></h1>
           <div class="breadcrumb">
@@ -23,7 +23,7 @@
             </div>
         <?php } ?>-->
   <?php if ($categories) { ?>
-        <h2><?php echo $text_refine; ?></h2>
+<!--        <h2><?php echo $text_refine; ?></h2>-->
         <div class="category-list">
             <?php if (count($categories) <= 5) { ?>
             <ul>
@@ -136,7 +136,7 @@
   </div>-->
   <?php } ?>
         
-    </div>
+<!--    </div>-->
 </div>
 <!--<script type="text/javascript">
 function display(view) {

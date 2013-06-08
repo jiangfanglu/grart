@@ -2,12 +2,6 @@
 jimport('joomla.filesystem.folder');?>
 <?php //echo JText::_('RANDOM USERS'); ?>
 <?php 
-$current_user = JFactory::getUser();
-if($current_user->guest){
-    $protocol = strpos(strtolower($_SERVER['SERVER_PROTOCOL']),'https') === FALSE ? 'http' : 'https';
-    $actual_link = "$protocol://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]?$_SERVER[QUERY_STRING]"; 
-    $_SESSION['redirect_after_login']=$actual_link;
-}
 $user_thumb_path = DS.'media'.DS.'userthumbs'.DS.(string)$current_user->id;
 if(JFolder::exists(JPATH_SITE.$user_thumb_path)){
     $thumb_path = '/media/userthumbs/'.(string)$current_user->id.'/thumb_120.jpg';

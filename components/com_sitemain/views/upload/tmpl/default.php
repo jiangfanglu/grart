@@ -30,7 +30,17 @@ defined('_JEXEC') or die('Restricted access');
                         <option value="0">Please select</option>
                         <?php
                         foreach($this -> categories as $cate){
-                            echo "<option value='".$cate->category_id."'>".$cate->name."</option>";
+                             echo $cate['children'];
+                             if(count($cate['children'])>0 ){
+                                 echo "<optgroup label='".$cate['parent']->name."'>";
+                                foreach($cate['children'] as $ca){
+                                    echo "<option class='child_option' value='".$ca->category_id."'>".$ca->name."</option>";
+                                }
+                                echo "</optgroup>";
+                             }else{
+                                 echo "<option class='parent_option' value='".$cate['parent']->category_id."'>".$cate['parent']->name."</option>";
+                             }
+                                
                         }
                         ?>
                     </select>

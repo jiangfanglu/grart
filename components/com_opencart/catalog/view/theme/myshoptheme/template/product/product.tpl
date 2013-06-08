@@ -1,20 +1,6 @@
 <?php echo $header; ?>
     
      <div id="content">
-        <div class="cm_content_left">
-            <?php echo $column_left; ?>
-            <div style="padding-top: 20px;display:table;">
-                 <div class="tags"><b><?php echo $text_tags; ?></b>
-                    <?php for ($i = 0; $i < count($tags); $i++) { ?>
-                    <?php if ($i < (count($tags) - 1)) { ?>
-                    <a href="<?php echo $tags[$i]['href']; ?>"><?php echo $tags[$i]['tag']; ?></a>,
-                    <?php } else { ?>
-                    <a href="<?php echo $tags[$i]['href']; ?>"><?php echo $tags[$i]['tag']; ?></a>
-                    <?php } ?>
-                    <?php } ?>
-                  </div>
-            </div>
-        </div>
         <div class="cm_content_main">
               <div class="breadcrumb">
                 <?php foreach ($breadcrumbs as $breadcrumb) { ?>
@@ -167,6 +153,15 @@
                 <b>Sold:</b> <?php echo $total_sold ?>
             </div>-->
         </div>
+        <div class="tags"><b><?php echo $text_tags; ?></b>
+                    <?php for ($i = 0; $i < count($tags); $i++) { ?>
+                    <?php if ($i < (count($tags) - 1)) { ?>
+                    <a href="<?php echo $tags[$i]['href']; ?>"><?php echo $tags[$i]['tag']; ?></a>,
+                    <?php } else { ?>
+                    <a href="<?php echo $tags[$i]['href']; ?>"><?php echo $tags[$i]['tag']; ?></a>
+                    <?php } ?>
+                    <?php } ?>
+                  </div>
         <div class="product_info_divs_alt">
             <?php if ($review_status) { ?>
                 <div class="review">

@@ -1,4 +1,10 @@
-<?php defined( '_JEXEC' ) or die( 'Restricted access' );?>
+<?php defined( '_JEXEC' ) or die( 'Restricted access' );
+$current_user = JFactory::getUser();
+if($current_user->guest){
+    $protocol = strpos(strtolower($_SERVER['SERVER_PROTOCOL']),'https') === FALSE ? 'http' : 'https';
+    $actual_link = urlencode("$protocol://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]?$_SERVER[QUERY_STRING]"); 
+}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" >
 <head>
@@ -132,7 +138,7 @@
             <div class="right"> <a href="<?php echo JUri::base() ?>index.php?option=com_opencart&route=account/forgotten">Forgotten Password</a></div>
             
         </div>
-        <form action="<?php echo JUri::base() ?>index.php?option=com_opencart&route=account/login" method="post" enctype="multipart/form-data">
+        <form id="float_login_form" action="<?php echo JUri::base() ?>index.php?option=com_opencart&route=account/login" method="post" enctype="multipart/form-data">
       
         <div class="l_content">
             <input type="text" id="login_email" name="email" value="Email" />
@@ -148,6 +154,27 @@
     </div>
 </div>
 <script>
+jQuery('#float_login_form').submit(function(){
+    return set_session();
+});
+function set_session(){
+    var ajax_ss = jQuery.ajax({
+        type: 'POST',
+        url: '<?php echo JUri::base()."index.php?option=com_sitemain&task=setRedirectionSession&tmpl=component" ?>',
+        data: { current_url: '<?php echo $actual_link ?>' },
+        beforeSend:function(){
+          loaderlength = 0;
+          jQuery('#loadingbar').css('display',"block");
+        },
+        success:function(data){
+            return true;
+        },
+        error:function(){
+            return false;
+        }
+      });
+ }
+
 jQuery("#signupbtn").click(function(){
     document.location.href = '<?php echo juri::base().'index.php?option=com_opencart&route=account/register' ?>';
 });

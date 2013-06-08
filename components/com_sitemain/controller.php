@@ -29,7 +29,11 @@ class SitemainController extends JControllerLegacy
         $model -> setPrimaryImage($artwork_id, $artwork_image_id);
         //echo $getData['artwork_primary'];
     }
-
+    
+    public function setRedirectionSession(){
+        $_SESSION['redirect_after_login']= urldecode(JRequest::getVar('current_url'));
+        echo 'session_set';
+    }
 
     public function test(){
         echo JPATH_ADMINISTRATOR;

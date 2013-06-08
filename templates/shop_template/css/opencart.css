@@ -806,6 +806,7 @@ a.button_ext:hover, input.button_ext:hover {
 	border-radius: 0px!important;
 	border: 0px!important;
 	padding: 0px!important;
+        overflow: hidden;
 }
 /* box products */
 .box-product {
@@ -932,11 +933,32 @@ a.button_ext:hover, input.button_ext:hover {
 }
 .category-list {
 	overflow: hidden;
-	margin-bottom: 20px;
+	margin-bottom: 5px;
 }
 .category-list ul {
 	float: left;
-	width: 18%;
+        padding-left:0px;
+}
+.category-list li{
+    display:inline-block;
+    list-style: none;
+    padding: 3px 5px;
+    margin:2px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #2e2d2d;
+    background: #2e2d2d;
+}
+.category-list li:hover{
+    background: #f7f7f7;
+    border-color: #f7f7f7;
+}
+.category-list li:hover a{
+    color:#2e2d2d;
+}
+.category-list li a{
+    color:#fff;
 }
 /* manufacturer */
 .manufacturer-list {
@@ -968,12 +990,14 @@ a.button_ext:hover, input.button_ext:hover {
 	border-bottom: 1px solid #EEEEEE;
 	padding-bottom: 5px;
         margin-bottom: 10px;
-	overflow: auto;
+        display: table;
 }
 .product-filter .display {
 	margin-right: 15px;
 	float: left;
 	padding-top: 4px;
+        font-size:20px;
+        font-family: Oswald-Light;
 	/* color: #333; */
 }
 .product-filter .display a {
@@ -1879,6 +1903,7 @@ a.linkage:hover{
 }
 #search_criteria{
     font-size:14px;
+    padding-top:5px;
 }
 input[type="text"].inpuclass{
     padding:8px!important;
@@ -1895,6 +1920,7 @@ input[type="text"].inpuclass{
     width:840px;
     border-top: 1px solid #eee!important;
     padding-top: 5px!important;
+    display:table;
 }
 .image_product img{
     width:200px!important;
@@ -2040,4 +2066,33 @@ input[type="text"].inpuclass{
     background:#eee;
     color:#2e2d2d;
     border:1px solid #eee;
+}
+.subcategory{
+    display:none;
+    max-width:400px;
+    position:absolute;
+    padding:5px;
+    background: #f7f7f7;
+    -webkit-box-shadow: 1px 1px 3px #2e2d2d;
+    -moz-box-shadow: 1px 1px 3px #2e2d2d;
+    box-shadow: 1px 1px 3px #2e2d2d;
+}
+.subcategory a{
+    font-family: Calibri!important;
+    font-size: 14px!important;
+    color:#2e2d2d!important;
+    border-bottom: none!important;
+}
+.subcategory li{
+    border-bottom: none!important;
+    padding:3px 5px!important;
+    margin:3px!important;
+    float: left;
+    display: inline-block;
+}
+.subcategory li:hover{
+    background: #f7f7f7!important;
+}
+.subcategory li:hover a{
+    color: #858282!important;
 }
