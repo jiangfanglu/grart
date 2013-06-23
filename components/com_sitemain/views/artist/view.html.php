@@ -64,5 +64,6 @@ class SitemainViewArtist extends JViewLegacy
                   );
               }
           }
+          
 }
 ?>

@@ -67,93 +67,90 @@ class SitemainController extends JControllerLegacy
         $this -> checkuser();
         $user_id = (string)JFactory::getUser()->get('id');
         
-        if((bool)JRequest::getVar('terms_conds') == true){
-            foreach($_FILES['Filedata']['name'] as $name => $value){
-                //this is the name of the field in the html form, filedata is the default name for swfupload
-                //so we will leave it as that
-                $fieldName = 'Filedata';
-                $fileError = $_FILES[$fieldName]['error'][$name];
-                if ($fileError > 0) 
-                {
-                        switch ($fileError) 
-                        {
-                        case 1:
-                        echo JText::_( 'FILE TO LARGE THAN PHP INI ALLOWS' );
-                        return;
-
-                        case 2:
-                        echo JText::_( 'FILE TO LARGE THAN HTML FORM ALLOWS' );
-                        return;
-
-                        case 3:
-                        echo JText::_( 'ERROR PARTIAL UPLOAD' );
-                        return;
-
-                        case 4:
-                        echo JText::_( 'ERROR NO FILE' );
-                        return;
-                        }
-                }
-                $fileSize = $_FILES[$fieldName]['size'][$name];
-                if($fileSize > 10000000)
-                {
-                    echo JText::_( 'FILE BIGGER THAN 10MB' );
+        foreach($_FILES['Filedata']['name'] as $name => $value){
+            //this is the name of the field in the html form, filedata is the default name for swfupload
+            //so we will leave it as that
+            $fieldName = 'Filedata';
+            $fileError = $_FILES[$fieldName]['error'][$name];
+            if ($fileError > 0) 
+            {
+                    switch ($fileError) 
+                    {
+                    case 1:
+                    echo JText::_( 'FILE TO LARGE THAN PHP INI ALLOWS' );
                     return;
-                }
-                $fileName = $user_id."_".$_FILES[$fieldName]['name'][$name];
-                $uploadedFileNameParts = explode('.',$fileName);
-                $uploadedFileExtension = array_pop($uploadedFileNameParts);
-                $validFileExts = explode(',', 'jpeg,jpg,png,gif,tiff');
 
-                $extOk = false;
-                foreach($validFileExts as $key => $value)
-                {
-                        if( preg_match("/$value/i", $uploadedFileExtension ) )
-                        {
-                                $extOk = true;
-                        }
-                }
-                if ($extOk == false) 
-                {
-                        echo JText::_( 'INVALID EXTENSION' );
-                        return;
-                }
-                $fileTemp = $_FILES[$fieldName]['tmp_name'][$name];
-                $imageinfo = getimagesize($fileTemp);
-                $okMIMETypes = 'image/jpeg,image/pjpeg,image/png,image/x-png,image/gif,image/tiff';
-                $validFileTypes = explode(",", $okMIMETypes);           
+                    case 2:
+                    echo JText::_( 'FILE TO LARGE THAN HTML FORM ALLOWS' );
+                    return;
 
-                if( !is_int($imageinfo[0]) || !is_int($imageinfo[1]) ||  !in_array($imageinfo['mime'], $validFileTypes) )
-                {
-                        echo JText::_( 'INVALID FILETYPE' );
-                        return;
-                }
+                    case 3:
+                    echo JText::_( 'ERROR PARTIAL UPLOAD' );
+                    return;
 
-                $tempPath = JPATH_SITE.DS.'media'.DS.'uploaded_artwork';
+                    case 4:
+                    echo JText::_( 'ERROR NO FILE' );
+                    return;
+                    }
+            }
+            $fileSize = $_FILES[$fieldName]['size'][$name];
+            if($fileSize > 10000000)
+            {
+                echo JText::_( 'FILE BIGGER THAN 10MB' );
+                return;
+            }
+            $fileName = $user_id."_".$_FILES[$fieldName]['name'][$name];
+            $uploadedFileNameParts = explode('.',$fileName);
+            $uploadedFileExtension = array_pop($uploadedFileNameParts);
+            $validFileExts = explode(',', 'jpeg,jpg,png,gif,tiff');
 
-                if(JFolder::exists($tempPath.DS.$user_id)){
+            $extOk = false;
+            foreach($validFileExts as $key => $value)
+            {
+                    if( preg_match("/$value/i", $uploadedFileExtension ) )
+                    {
+                            $extOk = true;
+                    }
+            }
+            if ($extOk == false) 
+            {
+                    echo JText::_( 'INVALID EXTENSION' );
+                    return;
+            }
+            $fileTemp = $_FILES[$fieldName]['tmp_name'][$name];
+            $imageinfo = getimagesize($fileTemp);
+            $okMIMETypes = 'image/jpeg,image/pjpeg,image/png,image/x-png,image/gif,image/tiff';
+            $validFileTypes = explode(",", $okMIMETypes);           
+
+            if( !is_int($imageinfo[0]) || !is_int($imageinfo[1]) ||  !in_array($imageinfo['mime'], $validFileTypes) )
+            {
+                    echo JText::_( 'INVALID FILETYPE' );
+                    return;
+            }
+
+            $tempPath = JPATH_SITE.DS.'media'.DS.'uploaded_artwork';
+
+            if(JFolder::exists($tempPath.DS.$user_id)){
+                //$uploadPath = $tempPath.DS.$user_id.DS.$fileName;
+                $uploadPath = $tempPath.DS.$fileName;
+
+                $this -> saveimages($fileTemp,$uploadPath ,$tempPath,$fileName);
+            }else{
+                if(JFolder::create($tempPath.DS.$user_id,0777)){
+
                     //$uploadPath = $tempPath.DS.$user_id.DS.$fileName;
                     $uploadPath = $tempPath.DS.$fileName;
 
-                    $this -> saveimages($fileTemp,$uploadPath ,$tempPath,$fileName);
+                    $this -> saveimages($fileTemp, $uploadPath ,$tempPath,$fileName);
                 }else{
-                    if(JFolder::create($tempPath.DS.$user_id,0777)){
-
-                        //$uploadPath = $tempPath.DS.$user_id.DS.$fileName;
-                        $uploadPath = $tempPath.DS.$fileName;
-
-                        $this -> saveimages($fileTemp, $uploadPath ,$tempPath,$fileName);
-                    }else{
-                            echo JText::_( 'ERROR CREATING FOLDER' );
-                            return;
-                    }
+                        echo JText::_( 'ERROR CREATING FOLDER' );
+                        return;
                 }
-
             }
-            $this -> savePhotoData($_FILES['Filedata']['name']);
-        }else{
-            echo JText::_( 'Terms and conditions must be agreed' );
+
         }
+        $this -> savePhotoData($_FILES['Filedata']['name']);
+
         
         
     }

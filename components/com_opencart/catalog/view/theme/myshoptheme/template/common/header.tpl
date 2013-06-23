@@ -82,7 +82,7 @@ DD_belatedPNG.fix('#logo img');
         <?php foreach ($categories as $category){?>
           <li id="categorymenu_<?php echo $category['id']?>">
             <a href="<?php echo $category['href']; ?>" >
-                <?php echo strtoupper($category['name']);?>
+                <?php echo $category['name'];?>
             </a>
           </li>
         <?php if ($category['children']) { ?>

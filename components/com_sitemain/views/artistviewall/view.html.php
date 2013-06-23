@@ -4,10 +4,12 @@ defined('_JEXEC') or die('Restricted access');
 class SitemainViewArtistviewall extends JViewLegacy
 {
     function display($tpl=NULL){
+        
         $app = JFactory::getApplication();
             if(!$_GET['artist_id']){
                 $app ->redirect(JURI::base());
             }
+            
             $model =& $this ->getModel('Artistviewall');
             $artist = $model -> getArtist($_GET['artist_id']);
             $partworks = $model -> getAllArtworks($_GET['artist_id']);

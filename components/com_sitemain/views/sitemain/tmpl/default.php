@@ -6,115 +6,29 @@ defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.filesystem.folder');
 
-
-//$positionss = array();
-//$n=0;
-//$start_top = 20;
-//$start_left = 0;
-//$left = 0;
-//$top = 0;
-//$col = 4;
-//$col_width = 210;
-//$row = 1;
-//$current_col = 0;
-//$margin = 5;
-//$col_height_total = 0;
-//
-//foreach($divarr as $d){
-//    $col_height_total = $start_top + 0;
-//    if($n%$col==0){
-//        $left = 0;
-//        $current_col = 0;
-//        $row = $n/$col;
-//    }
-//    $current_col += 1;
-//    $left = $start_left + $left + $col_width;
-//    
-//    for($i=$current_col;$i<=($row*$col);$i+=$col){
-//        $col_height_total += $divarr[$i-1]+$margin;
-//    }
-//    
-//    $positionss[$n] = array(
-//        'left'=>(string)$left,
-//        'top'=>(string)$col_height_total
-//    );
-//    $n += 1;
-//}
-
-
 ?>
 
 <div class="container">
-    <?php 
-//        $n=0;
-//        foreach($divarr as $d){
-//            echo "<div class='gimg' style='height:".(string)$d."px;left:".$positionss[$n]['left']."px;top:".$positionss[$n]['top']."px;'>&nbsp;</div>";
-//            $n+=1;
-//        }
-    ?>
-    <div id="categories_breadcrumbs">
-        <ul>
-        <?php foreach($this->categories as $c){?>
-          <li>
-            <a href="<?php echo JURI::base()."index.php?option=com_opencart&Itemid=484&route=product/category&path=".$c->category_id ;?>">
-                <?php echo strtoupper($c->name);?>
-            </a></li>
-            <li class="divider">|</li>
-        <?php } ?>
-            <li>
-                <a href="<?php echo JUri::base().'index.php?option=com_opencart' ?>">
-                    MORE
-                </a>
-            </li>
-            </ul>
-    </div>
-    
-    <div class="divder_bg">&nbsp;</div>
     
     <div class="featuredaw">
         <div class="hero-unit">
 <!--            Hero Unit Placement-->
-       <a href="<?php echo Juri::base()."index.php?option=com_opencart&route=account/register"?>">
-            <img src="<?php echo Juri::base()."/templates/shop_template/images/hero.jpg"?>" /></a>
+       <?php 
+    $i=0;
+    foreach($this->categories as $c){ ?>
+    <div class="frontpage_categories" style="background:<?php echo $this->colors[$i] ?>;">
+        <a href="<?php echo JURI::base()."index.php?option=com_opencart&Itemid=484&route=product/category&path=".$c->category_id ;?>">
+                <?php echo $c->name; ?>
+        </a>
+    </div>
+    <?php 
+        $i++;
+    } ?>
         </div>
         <div class="hero-unit_right">
-            <div class="hero_cell" style="border-bottom: 1px solid #eee;">
-                <div class="hero_cell_left">
-                    <a href="<?php echo Juri::base()."index.php?option=com_opencart&route=account/register"?>">
-                        <img src="<?php echo Juri::base()."/templates/shop_template/images/joinnow.jpg"?>" />
-                    </a>
-                </div>
-                <div class="hero_cell_right">
-                    <a href="<?php echo Juri::base()."index.php?option=com_opencart&route=account/register"?>">
-                        Wish to sell your art works? It is as easy as JOIN and UPLOAD. Now, get started!
-                    </a>
-                    
-                </div>
-            </div>
-            <div class="hero_cell">
-                <div class="hero_cell_left">
-                    <a href="<?php echo Juri::base()."index.php?option=com_opencart"?>">
-                         <img src="<?php echo Juri::base()."/templates/shop_template/images/browse.jpg"?>" />
-                    </a>
-                </div>
-                <div class="hero_cell_right">
-                    <a href="<?php echo Juri::base()."index.php?option=com_opencart"?>">
-                        Looking to buy arts? Browse through our products from those talented artists.
-                    </a>
-                    
-                </div>
-            </div>
-        </div>
-        <?php //echo $this->loadTemplate('featuredaw'); ?>
-    </div>
-    
-<!--    <div class="divder_bg">&nbsp;</div>-->
-    
-    <div class="popular_artist">
-        <div class="patist_title">Meet Our Popular Artists  </div>
-        <div style="width:1040px;float: left;margin-top: 10px;">
+            <div class="patist_title"><?php echo JText::_('COM_SITEMAIN_MEET_OUR_POPULAR_ARTIST')?>  </div>
             <?php foreach($this->artists as $ats){?>
-                <div class="p_artist_img"> 
+                <div id="artist_<?php echo $ats->user_id ?>" class="p_artist_img"> 
                     <a href="<?php echo JURI::base().'index.php?option=com_sitemain&view=artist&artist_id='.(string)$ats -> user_id ;?>">
 
                         <?php if(JFolder::exists(JPATH_SITE.DS.'media'.DS.'userthumbs'.DS.(string)$ats -> user_id)){ ?>
@@ -124,14 +38,62 @@ jimport('joomla.filesystem.folder');
                         <?php } ?>
                     </a>
                 </div>
-                <div class="p_artist_name">
+                <div id="artist_name_<?php echo $ats->user_id ?>" class="p_artist_name">
                     <a href="<?php echo JURI::base().'index.php?option=com_sitemain&view=artist&artist_id='.(string)$ats -> user_id ;?>">
                         <?php echo substr($ats->name,0,15); ?> 
                     </a>
                 </div>
+            <script>
+                jQuery('#artist_<?php echo $ats->user_id ?>').mouseover(function(){
+                    jQuery('#artist_name_<?php echo $ats->user_id ?>').fadeIn('fast');
+                });
+                jQuery('#artist_name_<?php echo $ats->user_id ?>').mouseleave(function(){
+                    jQuery('#artist_name_<?php echo $ats->user_id ?>').fadeOut('fast');
+                });
+            </script>
             <?php } ?>
+            <div class="patist_more">
+                <a href="<?php echo JURI::base().'index.php?option=com_sitemain&view=artists';?>">
+                    <?php echo JText::_('COM_SITEMAIN_MORE')?>
+                </a>
+            </div>
         </div>
+        <?php //echo $this->loadTemplate('featuredaw'); ?>
+    </div>
+    
+<!--    <div class="divder_bg">&nbsp;</div>-->
+    
+    <div class="popular_artist">
         
+        
+         <div class="hero_cell">
+<!--                <div class="hero_cell_left">
+                    <a href="<?php echo Juri::base()."index.php?option=com_opencart&route=account/register"?>">
+                        <img src="<?php echo Juri::base()."/templates/shop_template/images/joinnow.jpg"?>" />
+                    </a>
+                </div>-->
+                <div class="hero_cell_right">
+                    <?php echo JText::_('COM_SITEMAIN_HERO_ARTISIT') ?>
+                    <a href="<?php echo Juri::base()."index.php?option=com_opencart&route=account/register"?>">
+                        <?php echo JText::_('COM_SITEMAIN_UPLOAD') ?>
+                    </a>
+                    
+                </div>
+            </div>
+            <div class="hero_cell">
+<!--                <div class="hero_cell_left">
+                    <a href="<?php echo Juri::base()."index.php?option=com_opencart"?>">
+                         <img src="<?php echo Juri::base()."/templates/shop_template/images/browse.jpg"?>" />
+                    </a>
+                </div>-->
+                <div class="hero_cell_right">
+                    <?php echo JText::_('COM_SITEMAIN_HERO_BUYERS') ?>
+                    <a href="<?php echo Juri::base()."index.php?option=com_opencart"?>">
+                        <?php echo JText::_('COM_SITEMAIN_GO_SHOPPING') ?>
+                    </a>
+                    
+                </div>
+            </div>
     </div>
     
     <div class="divder_line">&nbsp;</div>

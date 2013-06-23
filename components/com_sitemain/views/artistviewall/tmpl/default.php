@@ -17,6 +17,8 @@ if($this -> iffollowed){
         <span id="info_text">
         </span>
 </div>
+<?php $header_path = JPATH_BASE.DS.'components'.DS.'com_sitemain'.DS.'artist_header.php'?>
+<?php echo include $header_path ?>
 <div class="full_screen" style="margin-top: 10px;" id="artist_content">
     <?php if($this->artist['artist'] == null){ ?>
          <h2>He/She is not an artist yet, no profile page is provided, Sorry !</h2> <br/>

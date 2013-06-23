@@ -11,7 +11,15 @@ function closeStuff(id){
     $(s).style.top = position[1] + top + 'px';
     return false;
 }
-
+function getScreenWidth(){
+    var w = window,
+    d = document,
+    e = d.documentElement,
+    g = d.getElementsByTagName('body')[0],
+    x = w.innerWidth || e.clientWidth || g.clientWidth,
+    y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+    return x;
+}
 //IMAGE CROPING JS
 //COPY RIGHT FANGLU JIANG
 function $(obj){

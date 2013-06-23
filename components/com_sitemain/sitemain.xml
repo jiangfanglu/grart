@@ -28,6 +28,7 @@
 		<filename>index.html</filename>
 		<filename>gallery_main.php</filename>
                 <filename>controller.php</filename>
+                 <filename>router.php</filename>
                 <folder>views</folder>
                 <folder>models</folder>
 	</files>

@@ -2076,6 +2076,7 @@ input[type="text"].inpuclass{
     -webkit-box-shadow: 1px 1px 3px #2e2d2d;
     -moz-box-shadow: 1px 1px 3px #2e2d2d;
     box-shadow: 1px 1px 3px #2e2d2d;
+    z-index:999;
 }
 .subcategory a{
     font-family: Calibri!important;

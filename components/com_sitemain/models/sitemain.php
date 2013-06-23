@@ -52,6 +52,11 @@ class SitemainModelSitemain extends JModelItem
         
     }
     
+    public function getColors(){
+            $color = array('#90CA77','#81C6DD','#E9B64D','#E48743','#9E3B33','#E48743','#F4D6BC','#8FBCDB');
+            return $color;
+    }
+    
     //need modify, no popular machenism yet
     public function getPopularArtists(){
         $db = JFactory::getDbo();
@@ -59,7 +64,7 @@ class SitemainModelSitemain extends JModelItem
         $query->select('*');
         $query->from('#__artist at');
         $query->join('inner','#__users u on u.id = at.user_id');
-        $db->setQuery((string)$query,0,8);
+        $db->setQuery((string)$query,0,28);
         $artists = $db->loadObjectList();
         return $artists;
     }

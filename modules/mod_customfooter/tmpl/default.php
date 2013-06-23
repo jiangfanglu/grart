@@ -17,6 +17,19 @@ $script = <<<EOD
 EOD;
 
 jimport('joomla.filesystem.folder');
+
+$db=  JFactory::getDbo();
+$query = $db->getQuery(true);
+$query = "SELECT cd.category_id, cd.name 
+        FROM oc_category c 
+        LEFT JOIN oc_category_description cd 
+        ON (c.category_id = cd.category_id) 
+        LEFT JOIN oc_category_to_store c2s 
+        ON (c.category_id = c2s.category_id) 
+        WHERE c.parent_id = 0 AND c.status = '1' ORDER BY c.sort_order, LCASE(cd.name) limit 8";
+$db->setQuery((string)$query);
+$categories = $db->loadObjectList();
+
 ?>
 
 <!--<div class="divder_bg_dynamic">&nbsp;</div>-->
@@ -24,9 +37,18 @@ jimport('joomla.filesystem.folder');
     <div id="news_letter" class="full_screen">
         <form action="<?php echo JUri::base().'index.php?option=com_sitemain&view=newsletter' ?>" onsubmit="return validateEmail('newsletter_email');" method="post">
         <div class="ns_input"><input style="color:#ccc;" onfocus="setBlank(this)" onblur="setBlank(this)" type="text" value="<?php echo $email_default_value; ?>" id="newsletter_email" name="newsletter_email"/></div>
-        <div class="ns_input"><input type="submit" class="submit_btn" id="news_letter_btn" value="Subscribe our newsletter"/></div>
+        <div class="ns_input"><input type="submit" class="submit_btn" id="news_letter_btn" value="<?php echo JText::_('MOD_CUSTOMFOOTER_SUBSCRIB_NEWSLETTER')?>"/></div>
         </form>
         <div id="site_social">
+            
+            <?php 
+            $lang =& JFactory::getLanguage();
+            $locales = $lang->getLocale();
+            ?>
+            
+            <?php if($locales[0]=="zh_CN.utf8"){ ?>
+            <wb:follow-button uid="2786278857" type="red_1" width="67" height="24" ></wb:follow-button>
+            <?php }else{ ?>
             <div class="fb_btn">Like us on Social Medias</div>
             <div class="fb_btn">
                 <div class="fb-like" data-href="http://www.grart.com.au" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-colorscheme="light"></div>
@@ -48,7 +70,7 @@ jimport('joomla.filesystem.folder');
                   })();
                 </script>
             </div>
-            
+            <?php } ?>
 
         </div>
     </div>
@@ -63,30 +85,11 @@ jimport('joomla.filesystem.folder');
             <div id="links_categories" class="linkcolume">
                 <div class="footer_title">Product Category</div>
                 <ul>
-                    <li><a href="<?php echo JRoute::_('/index.php?option=com'); ?>">
-                            Drawings
-                    </a></li>
-                    <li><a href="<?php echo JRoute::_('/index.php?option=com'); ?>">
-                            Cartoon
-                    </a></li>
-                    <li><a href="<?php echo JRoute::_('/index.php?option=com'); ?>">
-                            Creative Photography
-                    </a></li>
-                    <li><a href="<?php echo JRoute::_('/index.php?option=com'); ?>">
-                            Patterns
-                    </a></li>
-                    <li><a href="<?php echo JRoute::_('/index.php?option=com'); ?>">
-                            Abstract
-                    </a></li>
-                    <li><a href="<?php echo JRoute::_('/index.php?option=com'); ?>">
-                            Art for Kids
-                    </a></li>
-                    <li><a href="<?php echo JRoute::_('/index.php?option=com'); ?>">
-                            Classic Replica
-                    </a></li>
-                    <li><a href="<?php echo JRoute::_('/index.php?option=com'); ?>">
-                            Crafted
-                    </a></li>
+                    <?php foreach($categories as $c){ ?>
+                        <li><a href="<?php echo JRoute::_("/index.php?option=com_opencart&Itemid=484&route=product/category&path=".$c->category_id); ?>">
+                                <?php echo $c->name?>
+                        </a></li>
+                    <?php } ?>
                 </ul>
             </div>
             
@@ -173,6 +176,17 @@ jimport('joomla.filesystem.folder');
             </div>
         </div>
         <div id="followus">
+            <?php if($locales[0]=="zh_CN.utf8"){ ?>
+            <!-- JiaThis Button BEGIN -->
+            <div class="jiathis_style_32x32">
+                    <p>关注我们：</p>
+                    <a class="jiathis_follow_tsina" rel="http://weibo.com/u/2786278857"></a>
+                    <a class="jiathis_follow_tqq" rel="http://t.qq.com/jiathis"></a>
+                    <a class="jiathis_follow_weixin" rel="http://www.jiathis.com/resource/default/images/weixin_code.jpg"></a>
+            </div>
+            <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1357288192517628" charset="utf-8"></script>
+            <!-- JiaThis Button END -->
+            <?php }else{ ?>
             <!-- AddThis Follow BEGIN -->
             <p>Follow Us</p>
             <div class="addthis_toolbox addthis_32x32_style addthis_default_style">
@@ -183,6 +197,11 @@ jimport('joomla.filesystem.folder');
             </div>
             <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-518ddce9075880ba"></script>
             <!-- AddThis Follow END -->
+            <?php } ?>
+            
+            
+            
+            
 
         </div>
 <!--        <div class="fb-comments" data-href="http://www.grart.com.au" data-width="400" data-num-posts="3"></div>-->
@@ -227,29 +246,76 @@ jimport('joomla.filesystem.folder');
 </div>
 <div id="vh_bar">
 <!--        <span id="svh">Show<br/>Recent<br/>Viewed</span>-->
-    <div onclick="showVHContent()"><img src="<?php echo Juri::base()."/templates/shop_template/images/quicklink_viewed.gif"?>" /></div>
-    <div>
-        <a href="<?php echo Juri::base()."index.php?option=com_opencart&route=checkout/cart" ?>">
-        <img src="<?php echo Juri::base()."/templates/shop_template/images/quicklink_cart.gif"?>" />
-        </a>
+    <div onclick="showVHContent()" class="vh_bar_div">
+        <div class="vh_bar_img">
+            <img src="<?php echo Juri::base()."/templates/shop_template/images/quicklink_viewed.png"?>" />
+        </div>
+        <div class="vh_bar_text">
+            浏览历史
+        </div>
     </div>
-    <div>
-        <a href="<?php echo Juri::base()."index.php?option=com_opencart&route=account/wishlist" ?>">
-        <img src="<?php echo Juri::base()."/templates/shop_template/images/quicklink_wishlist.gif"?>" />
-        </a>
+    <div class="vh_bar_div">
+        <div class="vh_bar_img">
+            <a href="<?php echo Juri::base()."index.php?option=com_opencart&route=checkout/cart" ?>">
+            <img src="<?php echo Juri::base()."/templates/shop_template/images/quicklink_cart.png"?>" />
+            </a>
+        </div>
+        <div class="vh_bar_text">
+             <a href="<?php echo Juri::base()."index.php?option=com_opencart&route=checkout/cart" ?>">
+            购物车
+            </a>
+        </div>
+        
     </div>
-    <div>
-        <a href="<?php echo Juri::base()."index.php?option=com_sitemain&view=articles&c_id=80&a_id=71" ?>">
-        <img src="<?php echo Juri::base()."/templates/shop_template/images/quicklink_help.gif"?>" />
+    <div class="vh_bar_div">
+        <div class="vh_bar_img">
+            <a href="<?php echo Juri::base()."index.php?option=com_opencart&route=account/wishlist" ?>">
+        <img src="<?php echo Juri::base()."/templates/shop_template/images/quicklink_wishlist.png"?>" />
         </a>
+        </div>
+        <div class="vh_bar_text">
+            <a href="<?php echo Juri::base()."index.php?option=com_opencart&route=account/wishlist" ?>">
+        心愿单
+        </a>
+        </div>
+        
+        
+    </div>
+    <div class="vh_bar_div">
+        <div class="vh_bar_img">
+            <a href="<?php echo Juri::base()."index.php?option=com_sitemain&view=articles&c_id=80&a_id=71" ?>">
+        <img src="<?php echo Juri::base()."/templates/shop_template/images/quicklink_help.png"?>" />
+        </a>
+        </div>
+        <div class="vh_bar_text">
+             <a href="<?php echo Juri::base()."index.php?option=com_sitemain&view=articles&c_id=80&a_id=71" ?>">
+         帮助
+        </a>
+        </div>
+        
+       
     </div>
         <input type="hidden" id="checkRV" name="checkRV" value="1" />
 </div>
+<div id="menu_side" onclick="showSideBar()">
+    <img src="<?php echo Juri::base()."/templates/shop_template/images/menu-2.png"?>" />
+    <input type="hidden" id="sb_status" name="sb_status" value="0" />
+</div>
 <script>
-
-    $('vh_bar').style.display = 'table';
-    var position = xy('main_content');
-    $('vh_bar').style.left = position[0] + 1048+'px';
+function showSideBar(){
+    if($('sb_status').value=='0'){
+        $('sb_status').value='1'
+        $('vh_bar').style.display = 'table';
+    }else{
+        $('sb_status').value='0'
+        $('vh_bar').style.display = 'none';
+    }
+}
+    var position = xy('navig');
+    //var width = (getScreenWidth()-1040)/2-20;
+    $('vh_bar').style.left = position[0] + 1043+'px';
+    //$('vh_bar').style.width = width + 'px';
+    $('menu_side').style.left = position[0] + 1043+'px';
     
     function showVHContent(){
         if($('checkRV').value == '0'){

@@ -3,13 +3,17 @@
 defined('_JEXEC') or die('Restricted access');
 ?>
 <div class="container">
-    <div id="info_alert" class="alert alert-error" style="">
+    <div id="info_alert" class="alert alert-success" style="">
         <button type="button" class="close" data-dismiss="alert" onclick="return closeInfoAlert();">×</button>
         <span id="info_text">
             Your payment will be made on a monthly base. Frequent transactions of your payment will end up increasing your fee to PayPal. If you wish to find out more about the details, please read 
             <a target="_blank" href="https://cms.paypal.com/au/cgi-bin/marketingweb?cmd=_render-content&content_ID=ua/FeesPolicy_full&locale.x=en_AU">PayPal Fee Policy</a>
         </span>
 </div>
+    <p>
+        The following account balance is calculated based on the Commission Rate. 
+        <a href="">Check your Commission Rate table here</a>
+    </p>
     <div id="sales_summary" class="acount_full_width">
         <div class="heading">Your Products' Sales Summary</div>
         <table>

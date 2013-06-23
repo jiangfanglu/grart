@@ -14,7 +14,15 @@ jimport('joomla.filesystem.folder');
     }
     
     ?>
-<div style="width:210px;background: #fff;margin:5px; float: left;">
+<a href="<?php echo JUri::base().'index.php?option=com_sitemain&view=artist&artist_id='.$flr['follower']->follower_user_id ?>">
+    <img style="width:51px;" class="usr_thumb" src="<?php echo $thumb_path; ?>" />
+</a>
+
+
+
+
+
+<!--<div style="width:210px;background: #fff;margin:5px; float: left;">
     <div style="width:51px;margin:3px;border:1px solid #eee; font-family: Tahoma">
             <a href="<?php echo JUri::base().'index.php?option=com_sitemain&view=artist&artist_id='.$flr['follower']->follower_user_id ?>">
                 <img style="width:51px;" class="usr_thumb" src="<?php echo $thumb_path; ?>" />
@@ -35,5 +43,5 @@ jimport('joomla.filesystem.folder');
             </a>
         </div>
     </div>
-</div>
+</div>-->
 <?php } ?>

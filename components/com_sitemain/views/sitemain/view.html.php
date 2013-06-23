@@ -12,11 +12,13 @@ class SitemainViewSitemain extends JViewLegacy
                 $categories = $categorieModel -> getCategories(0);
                 $featured_articles =& $this -> get('Featured');
                 $featured_artworks =& $this -> get('FeaturedArtworks');
+                $colors =& $this -> get('Colors');
                 
                 $this ->assignRef('artists', $artists);
                 $this ->assignRef('categories', $categories);
                 $this ->assignRef('featured_articles', $featured_articles);
                 $this ->assignRef('featured_artworks', $featured_artworks);
+                $this -> assignRef('colors',$colors);
                 
                 // Display the view
                 parent::display($tpl);

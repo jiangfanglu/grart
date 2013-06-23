@@ -53,18 +53,18 @@ defined('_JEXEC') or die('Restricted access');
                     <input type="text" id="tags" name="tags" value="Tags" />
                 </div>
                 <div class="form_note">
-                    Tags are separated by space(" ") and comma(,).
+                    Tags are separated by space(" ") or comma(,).
                 </div>
             </div>
             
             
-            <div class="form_line upload_width">
+<!--            <div class="form_line upload_width">
                 <div class="form_label upload_width"></div>
                 <div class="form_input">
                     <textarea id="meta_desc" name="meta_desc" row="3" col="50" maxlength="200">Meta Description</textarea>
                 </div>
                 <div class="form_note">This is a short version of description. For promoting purpose. Maximum 200 characters.</div>
-            </div>
+            </div>-->
             <div class="form_line upload_width">
                 <div class="form_label upload_width">Artwork Images</div>
                 <div class="form_input">
@@ -84,19 +84,13 @@ defined('_JEXEC') or die('Restricted access');
                 <div class="form_note"></div>
             </div>
             <div class="form_line upload_width">
-                <div class="form_label upload_width">
-                    
+                <div class="form_note">
+                    By clicking 'Upload', you agree to our <a target="_blank" href="<?php echo JUri::base().'index.php?option=com_sitemain&view=articles&c_id=83&a_id=76' ?>">Terms and Conditions</a><br/><br/>
                 </div>
                 <div class="form_input" style="font-size:13px;">
-<!--                    <input type="checkbox" id="terms_conds" name="terms_conds" />
-                    I agree the <a style="text-decoration: underline;" target="_blank" href="<?php echo JUri::base().'index.php?option=com_sitemain&view=articles&c_id=83&a_id=76' ?>">Terms and Conditions</a> 
-                    <br/><br/>-->
                     <input type="submit" value="Upload" id="btnSubmit" class="submit_btn" />
                 </div>
-                <div class="form_note">
-                    
-                    
-                </div>
+                
             </div>
         </form>
     </div>
@@ -132,6 +126,9 @@ defined('_JEXEC') or die('Restricted access');
             Good To Know
         </div>
         <div class="explain_text">
+            <p>
+                <a href='<?php echo JRoute::_('index.php?option=com_sitemain&view=upload') ?>'>Link</a>
+            </p>
             <p>
                 It might take us up to 48 hours to process your uploaded image(s). But most of times, it can be done within an hour.
                 

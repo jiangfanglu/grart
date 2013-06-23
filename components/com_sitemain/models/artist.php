@@ -126,7 +126,7 @@ class SitemainModelArtist extends JModelItem
         }
         
         
-        $db->setQuery((string)$query);
+        $db->setQuery((string)$query,0,5);
         $images = $db->loadObjectList();
         return $images;
     }

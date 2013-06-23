@@ -4,18 +4,33 @@ if($current_user->guest){
     $protocol = strpos(strtolower($_SERVER['SERVER_PROTOCOL']),'https') === FALSE ? 'http' : 'https';
     $actual_link = urlencode("$protocol://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]?$_SERVER[QUERY_STRING]"); 
 }
+$lang =& JFactory::getLanguage();
+$locales = $lang->getLocale();
 ?>
+<?php if($locales[0]=="zh_CN.utf8"){ ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//ZH" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+            <?php }else{ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" >
+<?php } ?>
+<html xmlns:wb=“http://open.weibo.com/wb” xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" >
 <head>
 	<jdoc:include type="head" />
         <script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/js/shop.js" type="text/javascript"></script>
         <script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/js/jquery.masonry.min.js" type="text/javascript"></script>
         <script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/js/lightbox.js" type="text/javascript"></script>
+        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
 <!--	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/system/css/system.css" type="text/css" />
 	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/system/css/general.css" type="text/css" />
 	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/css/template.css" type="text/css" />-->
+        <?php 
+            
+            ?>
+            
+            <?php if($locales[0]=="zh_CN.utf8"){ ?>
+<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/css/template_cn.css" type="text/css" />
+            <?php }else{ ?>
         <link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/css/template_alt.css" type="text/css" />
+        <?php } ?>
         <link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/css/opencart.css" type="text/css" />
         <link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/css/lightbox.css" type="text/css" />
 </head> 
@@ -34,35 +49,37 @@ if($current_user->guest){
     <div class="top_bar">
         <div class="header_top">
                     <div class="header_in_toleft">
-                        <div class="logoo">
+                        <div class="logoo" id="logoimg">
                             <a href="<?php echo $this->baseurl ?>">
-                                <img src="<?php echo $this->baseurl ?>/templates/shop_template/images/grart_logo_beta.gif" />
+                                <img src="<?php echo $this->baseurl ?>/templates/shop_template/images/grart_logo.gif" />
                             </a>
                         </div>
 <!--                        <jdoc:include type="modules" name="position-1" style="none" />-->
-                        <div class="navli">
+                        <div class="navli" id="navig">
                             <ul>
-                                <li><a href="<?php echo JUri::base() ?>">Home</a></li>
-                                <li><a href="<?php echo JUri::base()."index.php?option=com_opencart" ?>">Shop</a></li>
+                                <li><a href="<?php echo JUri::base() ?>">
+                                    <?php echo JText::_('TPL_SHOP_TEMPLATE_HOME')?>
+                                    </a></li>
+                                <li><a href="<?php echo JUri::base()."index.php?option=com_opencart" ?>"><?php echo JText::_('TPL_SHOP_TEMPLATE_SHOP')?></a></li>
                             </ul>
                         </div>
                         <div class="search_box">
                             <div class="search_box_input">
                                 <form id="" action="/index.php?option=com_sitemain&task=search" method="post" onsubmit="return validateSearchForm();">
                                     <input type="text" id="search_content" name="search_content" class="search_text" />
-                                    <input type="submit" class="search_btn" value="Search" />
+                                    <input type="submit" class="search_btn" value="<?php echo JText::_('TPL_SHOP_TEMPLATE_SEARCH')?>" />
                                     <input type="hidden" id="search_category" name="search_category" value="shop" />
                                 </form>
                             </div>
                             <div id="sb_isc" style="width:59px;" class="search_box_input_select_category" onclick="showCategorySelect()">
-                                in 'shop'
+                                <?php echo JText::_('TPL_SHOP_TEMPLATE_SHOP_search')?>
                             </div>
                         </div>
                         <div id="search_category_select" onmouseout="hideStuff(this)">
                             <ul>
-                                <li onclick="setSearchCategory('shop')">Shop</li>
-                                <li onclick="setSearchCategory('artists')">Artists</li>
-                                <li onclick="setSearchCategory('help')">Help</li>
+                                <li onclick="setSearchCategory('shop')"><?php echo JText::_('TPL_SHOP_TEMPLATE_SHOP_search')?></li>
+                                <li onclick="setSearchCategory('artists')"><?php echo JText::_('TPL_SHOP_TEMPLATE_ARTIST')?></li>
+                                <li onclick="setSearchCategory('help')"><?php echo JText::_('TPL_SHOP_TEMPLATE_HELP')?></li>
                             </ul>
                         </div>
                         <script>
@@ -118,7 +135,8 @@ if($current_user->guest){
             if($('loadingbar').style.display == 'none'){
                 $('loadingbarinner').style.width = '0px';
             }else{
-                if((loaderlength + 10) < 1040){
+                var screen_width = getScreenWidth();
+                if((loaderlength + 10) < screen_width){
                     $('loadingbarinner').style.width = loaderlength +'px';
                 }
                 loaderlength += 5;
@@ -147,15 +165,17 @@ if($current_user->guest){
             <input type="password" id="login_password" name="password" value="Password" />
         </div>
         <div class="l_button">
-            <input type="submit" value="Login" class="product-button" /> or 
+            <input type="button" id="login_btn" value="Login" class="product-button" /> or 
             <input type="button" id="signupbtn" value="Sign Up" class="product-button" />
         </div>
             </form>
     </div>
+    
 </div>
 <script>
-jQuery('#float_login_form').submit(function(){
-    return set_session();
+jQuery('#login_btn').click(function(e){
+    e.preventDefault();
+    set_session();
 });
 function set_session(){
     var ajax_ss = jQuery.ajax({
@@ -167,7 +187,7 @@ function set_session(){
           jQuery('#loadingbar').css('display',"block");
         },
         success:function(data){
-            return true;
+            jQuery('#float_login_form').trigger('submit');
         },
         error:function(){
             return false;
@@ -209,12 +229,27 @@ jQuery("#login_password").blur(function(){
     }
 });
 </script>
+<div style="position:absolute;left:0px;top:41px;width:100%;display: table;background:#81C6DD;z-index:-1;">
+    <div class="logo_and_slogan">
+                    <div>
+                        <a href="">
+                            <img src="/templates/shop_template/images/grart_logo.gif" alt="<?php echo JText::_('TPL_SHOP_TEMPLATE_SLOGO')?>" />
+                        </a>
+                    </div>
+                    <div>
+                        <?php echo JText::_('TPL_SHOP_TEMPLATE_SLOGAN')?>
+                    </div>
+      </div>
+</div>
+    
+              
     <div class="body" id="main_content">
 <!--        <div class="alert alert-error">
                 <span>
         GRART.com.au is under testing mode, any materials used are samples. If it breaches your right, please let us know. We will remove the content upon your request  as soon as we can. Any request, please send to jiangfanglu@hotmail.com
                 </span>
         </div>-->
+                
                 <div class="container-main">
                     <jdoc:include type="component" />
                 </div>
@@ -231,5 +266,24 @@ jQuery("#login_password").blur(function(){
     <div id="img_caption_arrow_fixed"><img src="<?php echo JUri::base().'templates/shop_template/images/arrowup.png'?>" /></div>
     <div id="img_caption_text_fixed"></div>
 </div>
+<script>
+jQuery(window).scroll(function() {
+    var y_scroll_pos = window.pageYOffset;
+    var scroll_pos_test = 40;             // set to whatever you want it to be
+
+    if(y_scroll_pos > scroll_pos_test) {
+        jQuery('#logoimg').show();
+    }else{
+        jQuery('#logoimg').hide();
+    }
+    
+    var scroll_artist_nav_pos_test = 210;
+    if(y_scroll_pos > scroll_artist_nav_pos_test) {
+        jQuery('#artist_navigation').show();
+    }else{
+        jQuery('#artist_navigation').hide();
+    }
+});
+</script>
 </body>
 </html>
