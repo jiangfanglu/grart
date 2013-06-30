@@ -611,3 +611,137 @@ function formFocus(obj, text,state){
         }
     }
 }
+function addToWishList(http_serv_url,product_id) {
+	jQuery.ajax({
+		url: http_serv_url + 'index.php?option=com_opencart&tmpl=component&route=account/wishlist/add',
+		type: 'post',
+		data: 'product_id=' + product_id,
+		dataType: 'json',
+		success: function(json) {
+			jQuery('.success, .warning, .attention, .information').remove();
+						
+			if (json['success']) {
+				jQuery('#notification').html('<div class="success" style="display: none;">' + json['success'] + '<img src="'+http_serv_url+'components/com_opencart/catalog/view/theme/default/image/close.png" alt="" class="close" /></div>');
+				
+				jQuery('.success').fadeIn('slow');
+				
+				jQuery('#wishlist-total').html(json['total']);
+				
+				jQuery('html, body').animate({ scrollTop: 0 }, 'slow');
+			}	
+		}
+	});
+}
+
+function saveNewPost(sender_id, content) {
+    loaderlength = 0;
+    $('loadingbar').style.display = "block";
+    var url = "/index.php?option=com_sitemain&task=save_new_posts&tmpl=component";
+    var asnp = new Request({
+        url: url,
+        method: "post",
+        onSuccess: function(response) {
+            if(response.replace(/(\n|\r)+$/, '')=="OK"){
+                loadJQContent('index.php?option=com_sitemain&view=posts&format=raw&artist_id='+$("artist_id").value,'artist_left_colume');
+            }
+           $('loadingbar').style.display = "none";
+        },
+        onError: function() {
+            $("artist_left_colume").innerHTML = "Failed!";
+        }
+    }).post({"sender_id": $("sender_id").value,
+                "artist_id": $("artist_id").value,
+        "content":$("content").value,
+        'isplain_content':$('isplain_content').value
+    });
+}
+
+function loadJQContent(url,target){
+    loaderlength = 0;
+    $('loadingbar').style.display = "block";
+    jQuery.ajax({
+        url: url
+    }).done(function(html){
+        //jQuery("#"+target).append(html);
+        jQuery("#"+target).html(html);
+        jQuery('#loadingbar').css('display','none');
+    });
+}
+function loadMootoolsContent(url,target){
+    loaderlength = 0;
+    $('loadingbar').style.display = "block";
+    var lmca = new Request({
+        url: url,
+        method: "get",
+        onSuccess: function(response) {
+            $('loadingbar').style.display = "none";
+            $(target).innerHTML = response;
+        },
+        onError: function() {
+            $(target).innerHTML = "Failed!";
+        }
+    }).send();
+}
+
+function loadMoreComment(target,post_id){
+    var page = parseInt($('current_comment_page_'+post_id).value) + 1;
+    $('current_comment_page_'+post_id).value = page;
+    loadMootoolsContent("/index.php?option=com_sitemain&view=comments&format=raw&post_id="+post_id+"&page="+page,target);
+}
+
+function saveNewComment(div_name, post_id,comment_input) {
+var url = "/index.php?option=com_sitemain&task=save_new_comment&tmpl=component";
+    var comAjax = new Request({
+        url: url,
+        method: "post",
+        onSuccess: function(response) {
+            if(response.replace(/(\n|\r)+$/, '')=="OK"){
+                loadJQContent('index.php?option=com_sitemain&view=comments&format=raw&post_id='+post_id,div_name);
+            }
+        },
+        onError: function() {
+            $(div_name).innerHTML = "Failed!";
+        }
+    }).post({"post_id": post_id,
+               "comment_content": $(comment_input).value
+    });
+}
+
+function deletePost(post_id) {
+
+    var url = "/index.php?option=com_sitemain&task=delete_post&tmpl=component";
+    var a = new Request({
+        url: url,
+        method: "post",
+        onSuccess: function(response) {
+            //alert(response);
+            $("info_banner").innerHTML = response;
+
+        },
+        onError: function() {
+            $("posts_container").innerHTML = "Failed!";
+        }
+    }).post({
+        "post_id": post_id
+
+    });
+}
+function deleteComment(comment_id) {
+
+    var url = "/index.php?option=com_sitemain&task=delete_comment&tmpl=component";
+    var a = new Request({
+        url: url,
+        method: "post",
+        onSuccess: function(response) {
+            //alert(response);
+            $("info_banner").innerHTML = response;
+
+        },
+        onError: function() {
+            $("info_banner").innerHTML = "Failed!";
+        }
+    }).post({
+        "comment_id": comment_id
+
+    });
+}

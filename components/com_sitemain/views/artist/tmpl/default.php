@@ -6,8 +6,6 @@
    jimport('joomla.filesystem.folder');
    
 
-
-
 ?>
 
 <div id="info_alert" class="alert alert-error" style="display: none">
@@ -16,10 +14,11 @@
         </span>
 </div>
 
-<?php $header_path = JPATH_BASE.DS.'components'.DS.'com_sitemain'.DS.'artist_header.php'?>
+<?php $header_path = JPATH_BASE.DS.'includes'.DS.'artist_header.php'?>
 <?php require $header_path ?>
 <div id="artist_left_colume">
-    &nbsp;
+    <?php echo $this->loadTemplate("compose"); ?>
+    <?php echo $this->loadTemplate("posts"); ?>
 </div>
 <div id="artist_right_colume">
     <div class="artist_right_div">

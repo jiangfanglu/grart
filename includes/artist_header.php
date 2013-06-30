@@ -28,7 +28,7 @@ if($this -> iffollowed){
             </li>
             <li>|</li>
             <li>
-                <a href="<?php echo JRoute::_('index.php?option=com_sitemain&view=') ?>">
+                <a href="<?php echo JRoute::_('index.php?option=com_sitemain&view=artistgallery&artist_id='.JRequest::getVar('artist_id')) ?>">
                     <?php echo JText::_('COM_SITEMAIN_GALLERY') ?> (<?php echo $this -> partworks_count ; ?>)
                 </a>
             </li>
@@ -112,8 +112,8 @@ if($this -> iffollowed){
                 </a>
             </li>
             <li>|</li>
-            <li class="<?php echo JRequest::getVar('view') == 'artist_gallery' ? 'active' : ''?>">
-                <a href="<?php echo JRoute::_('index.php?option=com_sitemain&view=') ?>">
+            <li class="<?php echo JRequest::getVar('view') == 'artistgallery' ? 'active' : ''?>">
+                <a href="<?php echo JRoute::_('index.php?option=com_sitemain&view=artistgallery&artist_id='.JRequest::getVar('artist_id')) ?>">
                     <?php echo JText::_('COM_SITEMAIN_GALLERY') ?> (<?php echo $this -> partworks_count ; ?>)
                 </a>
             </li>

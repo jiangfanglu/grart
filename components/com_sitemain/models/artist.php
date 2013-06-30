@@ -191,5 +191,8 @@ class SitemainModelArtist extends JModelItem
         }
         return $followers;
     }
+    public function getAllMessages($user_id) {
+        
+    }
 }
 ?>

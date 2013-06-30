@@ -580,5 +580,53 @@ class SitemainController extends JControllerLegacy
         }
     }
     
+     function save_new_posts() {
+       // echo "controller.save posts";
+         $data = JRequest::get('post');
+       // echo "+++$artist_id++++$content";
+        $model = $this->getModel('Posts');
+        $result = $model->saveNewPost($data);
+        if ($result) {
+            //$display = $model->getAllPostsForDisplay($artist_id);
+            echo "OK";
+        } else {
+            echo "Error occurred. Please try later.";
+        }
+    }
+    
+    function save_new_comment() {
+        $data = JRequest::get('post');
+        $model = $this->getModel('Comments');
+        $result = $model->saveNewComment($data);
+        if ($result) {
+            echo "OK";
+        } else {
+            echo "Error occurred. Please try later.";
+        }
+    }
+
+    function delete_post() {
+        $post_id = JRequest::getVar('post_id');
+        $model = $this->getModel('Posts');
+        $result = $model->deletePost($post_id);
+        if ($result) {
+            echo "The post has been deleted.";
+        } else {
+            echo "Error occurred. Please try later.";
+        }
+    }
+
+    function delete_comment() {
+        $comment_id = JRequest::getVar('comment_id');
+        $model = $this->getModel('Posts');
+        echo "***" . $comment_id;
+        $result = $model->deleteComment($comment_id);
+        if ($result) {
+            echo "The comment has been deleted.";
+        } else {
+            echo "Error occurred. Please try later.";
+        }
+    }
+    
 }
 ?>
