@@ -15,7 +15,7 @@ if(JFolder::exists(JPATH_SITE.$user_thumb_path)){
 <!--    <li><a href="/index.php?option=com_opencart&route=account/login">Login</a></li>-->
     <li id="main_login_li"><a id="main_login">
             <?php echo JText::_('MOD_USER_STATUS_LOGIN')?>
-        </a>
+        </a></li>
     <li><a href="/index.php?option=com_opencart&route=account/register"><?php echo JText::_('MOD_USER_STATUS_SINGUP')?></a></li>
     
 <?php } else { ?>

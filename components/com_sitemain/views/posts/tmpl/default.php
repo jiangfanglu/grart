@@ -4,6 +4,24 @@ defined('_JEXEC') or die('Restricted access');
 $sender_id = JFactory::getUser()->id;
 ?>
 <div id="compose_post">
+    <?php if($sender_id==0){ ?>
+        <div style="font-size: 12px;color:#ccc;">
+            <?php echo JText::_('COM_SITEMAIN_SAY_SOMETHING_LOGIN_OR_SIGNUP_FIRST')?>
+        </div>
+        <div style="font-size:12px;">
+            <a id="post_login">
+                <?php echo JText::_('COM_SITEMAIN_LOGIN')?>
+            </a>
+            <a href="/index.php?option=com_opencart&route=account/register">
+                <?php echo JText::_('COM_SITEMAIN_SIGNUP')?>
+            </a>
+        </div>
+    <script>
+    jQuery('#post_login').click(function(){
+        jQuery('#login_anywhere_out').css('display','block');
+    });
+    </script>
+    <?php }else{ ?>
         <form name="wall" id="wall"  method="get" >
             <div class="posts_item_line">
                 <div class="share_icon">
@@ -23,10 +41,10 @@ $sender_id = JFactory::getUser()->id;
                 <input type="button" id="new_post" onclick="saveNewPost(1,2);" value="<?php echo JText::_('COM_SITEMAIN_SHARE')?>" class="submit_btn">
             </div>
         </form>
-
-
-    </div>
+    <?php } ?>
+</div>
 <script>
+
 jQuery('#content').focus(function(){
     if(jQuery(this).html()=='<?php echo jText::_('COM_SITEMAIN_WRITE_SOMETHING')?>'){
         jQuery(this).html('');
@@ -112,9 +130,7 @@ jQuery('#content').focusout(function(){
             jQuery('#post_ctrl_<?php echo $post['post']->post_id ?>').mouseleave(function(){
                 jQuery('#img_caption').hide();
             });
-            jQuery('#post_ctrl_<?php echo $post['post']->post_id ?>').click(function(){
-                jQuery('#post_<?php echo $post['post']->post_id ?>').fadeOut('fast');
-            });
+            
         </script>
         <?php } ?>
         
@@ -208,7 +224,7 @@ jQuery('#content').focusout(function(){
     <script>
         jQuery('#comment_link_<?php echo $post['post']->post_id ?>').click(function(){
             <?php if($this->current_user->id == 0){ ?>
-                jQuery('#login_anywhere_out').fadeIn('slow');
+                jQuery('#login_anywhere_out').css('display','block');
             <?php }else{ ?>
                 jQuery('#add_comment_<?php echo $post['post']->post_id ?>').css('display','table');
             <?php } ?>
@@ -240,9 +256,18 @@ jQuery('#content').focusout(function(){
     <?php } ?>
         </div>
        <?php if($post['total_comments'] >  count($post['comments'])){ ?>
-            <div onclick="loadMoreComment('comments_<?php echo $post['post']->post_id ?>',<?php echo $post['post']->post_id ?>)" id="loadmore_<?php echo $post['post']->post_id ?>" class="loadmore">
+            <div id="loadmore_<?php echo $post['post']->post_id ?>" onclick="loadMoreComment('comments_<?php echo $post['post']->post_id ?>',<?php echo $post['post']->post_id ?>)" id="loadmore_<?php echo $post['post']->post_id ?>" class="loadmore">
                 <input type="hidden" id="current_comment_page_<?php echo $post['post']->post_id ?>" name="current_comment_page_<?php echo $post['post']->post_id ?>" value="1" />
                 <?php echo JText::_('COM_SITEMAIN_SHOW_MORE').JText::_('COM_SITEMAIN_COMMENT') ?>
             </div>
         <?php } ?>
+    <script>
+           jQuery('#post_ctrl_<?php echo $post['post']->post_id ?>').click(function(){
+                jQuery('#post_<?php echo $post['post']->post_id ?>').fadeOut('fast');
+                jQuery('#comments_<?php echo $post['post']->post_id ?>').fadeOut('fast');
+                if(jQuery(loadmore_<?php echo $post['post']->post_id ?>).length>0){
+                    jQuery('#loadmore_<?php echo $post['post']->post_id ?>').fadeOut('fast');
+                }
+            });
+    </script>
 <?php } ?>
