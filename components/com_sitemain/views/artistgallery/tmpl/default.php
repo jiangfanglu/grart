@@ -29,7 +29,7 @@ defined('_JEXEC') or die('Restricted access');
                         <div class="add" onclick="addToWishList('<?php echo JUri::base() ?>','<?php echo $aw->product_id ?>');">
                             <img src="/templates/shop_template/images/add.png" alt="<?php echo JText::_('COM_SITEMAIN_ADD_TO_WISHLIST')?>" title="<?php echo JText::_('COM_SITEMAIN_ADD_TO_WISHLIST')?>" />
                         </div>
-                        <div class="expand">
+                        <div class="expand" id="<?php echo 'expand_'.$aw->product_id?>">
                             <img src="/templates/shop_template/images/expand-3.png" alt="<?php echo JText::_('COM_SITEMAIN_EXPAND')?>" title="<?php echo JText::_('COM_SITEMAIN_EXPAND')?>" />
                         </div>
                 </div>
@@ -43,6 +43,13 @@ defined('_JEXEC') or die('Restricted access');
                             jQuery("#<?php echo 'artwork_brick_caption_'.$aw->product_id?>").css('display','none');
                         }
                     },50);
+                });
+                jQuery('#<?php echo 'expand_'.$aw->product_id?>').click(function(){
+                    jQuery('#gallery_bg').css('display','block');
+                    jQuery('#display_container').css('display','table');
+                    jQuery('#close_it').css('display','block');
+                    jQuery("#main_content").addClass("modal-open");
+                    loadJQContent('index.php?option=com_sitemain&view=artworkimage&format=raw&artwork_id=<?php echo $aw->artwork_id?>','display_container');
                 });
 //                jQuery("#<?php echo 'artwork_brick_caption_'.$aw->product_id?>").click(function(){
 //                    window.location.href = '';
@@ -92,3 +99,15 @@ defined('_JEXEC') or die('Restricted access');
             <?php echo JText::_('COM_SITEMAIN_THIS_ARTIST_HAS_NOT_UPLOADED_ANY_WORKS_YET')?>
         <?php } ?>
 </div>
+<div id="gallery_bg"></div>
+<div id="close_it"></div>
+<div id="display_container"></div>
+<script>
+jQuery('#close_it').click(function(){
+    jQuery('#gallery_bg').css('display','none');
+    jQuery('#display_container').css('display','none');
+    jQuery('#close_it').css('display','none');
+    jQuery('#display_container').html('');
+    jQuery("#main_content").removeClass("modal-open");
+});
+</script>

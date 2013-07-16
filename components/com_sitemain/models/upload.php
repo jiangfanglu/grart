@@ -179,7 +179,7 @@ class SitemainModelUpload extends JModelItem
     
     
     public function shareWithFriends($artist_id,$receiver_ids,$params){
-        $sender_id = JFactory::getUser()->id;
+        //$sender_id = JFactory::getUser()->id;
         $date = & JFactory::getDate();
         $db = JFactory::getDBO();
         $ip = $_SERVER['REMOTE_ADDR'];
@@ -188,7 +188,7 @@ class SitemainModelUpload extends JModelItem
             $query = $db->getQuery(true);
             $data = new stdClass();
             $data->id = null;
-            $data->sender_id = $sender_id;
+            $data->sender_id = $artist_id;
             $data->receiver_id = (int)$r_id;
             $data->post_content = JText::_('COM_SITEMAIN_ARTIST_UPLOAD_IMAGE_SHARE');
             $data->post_date = $date->toSql(TRUE);

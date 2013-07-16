@@ -2,6 +2,7 @@
 /*Artist Products*/
 defined('_JEXEC') or die('Restricted access');
 ?>
+<?php include('/includes/user_header.php');?>
 <div class="container">
     <div id="info_alert" class="alert alert-success" style="">
         <button type="button" class="close" data-dismiss="alert" onclick="return closeInfoAlert();">×</button>

@@ -515,6 +515,10 @@ function getArwork(obj,url){
                   }
                 }
                $('loadingbar').style.display = "none";
+               $('gallery_bg').style.display = "block";
+               $('close_edit_image').style.display = "block";
+               document.getElementsByTagName('body')[0].style.overflow = "hidden";
+               $('gallery_bg').style.overflow = "auto";
                $("artwork_main").innerHTML = response;
           },
           onError:function(){

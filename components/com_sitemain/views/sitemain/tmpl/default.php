@@ -63,6 +63,7 @@ jimport('joomla.filesystem.folder');
     
 <!--    <div class="divder_bg">&nbsp;</div>-->
     
+
     <div class="popular_artist">
         
         
@@ -96,11 +97,11 @@ jimport('joomla.filesystem.folder');
             </div>
     </div>
     
-    <div class="divder_line">&nbsp;</div>
+<!--    <div class="divder_line">&nbsp;</div>
     
     <div class="comments_blogs">
         <div class="grart_blog">
             <?php echo $this->loadTemplate('article'); ?>
         </div>
-    </div>
+    </div>-->
 </div>

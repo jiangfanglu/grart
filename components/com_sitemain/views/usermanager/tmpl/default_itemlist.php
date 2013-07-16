@@ -32,7 +32,7 @@ defined('_JEXEC') or die('Restricted access');
             <div class="usermanager_ctrl_text">
                 <ul>
                     <li class="usermmngr_li"><a href="#" onclick="return getUserContent(this, 'profile_content','<?php echo JURI::base().'index.php?option=com_sitemain&view=artist_products&format=raw'; ?>');">My Balance</a></li>
-                    <li class="usermmngr_li"><a href="#" onclick="return getUserContent(this, 'profile_content','<?php echo JURI::base().'index.php?option=com_sitemain&view=mygallery&format=raw'; ?>');">All Artworks</a></li>
+                    <li class="usermmngr_li"><a href="<?php echo JURI::base().'index.php?option=com_sitemain&view=mygallery'; ?>">All Artworks</a></li>
                 </ul>
             </div>
     <?php } ?>

@@ -122,7 +122,7 @@ class SitemainModelNetwork extends JModelItem
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
         $query = "SELECT u.name, u.id as user_id FROM #__users u
-                    inner join joomla.oc_customer c on c.email = u.email
+                    inner join oc_customer c on c.email = u.email
                     where customer_id = ".$customer_id;
         $db->setQuery($query);
         $user = $db ->loadObject();

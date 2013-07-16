@@ -1,5 +1,5 @@
 
-@font-face{
+/*@font-face{
     font-family: bebas;
     src:url('fonts/BEBAS___.ttf');
 }
@@ -18,32 +18,48 @@
 @font-face{
     font-family: Oswald-Regular;
     src:url('fonts/Oswald-Regular-webfont.ttf');
-}
+}*/
 body{
-    background:url('/templates/shop_template/images/twitter-bg.jpg') no-repeat fixed #c0deed;
+/*    background:url('/templates/shop_template/images/twitter-bg.jpg') no-repeat fixed #c0deed;*/
+}
+#body_out{
+    width:100%;
+    display:table;
+    top:42px;
+    left:0px;
+    position:absolute;
 }
 .body{
     width:1040px;
+    padding-top: 10px;
     margin-left: auto;
     margin-right:auto;
-    margin-top: 10px;
-    margin-top: 112px;
     font-family: Calibri, Arial, Helvetica, sans-serif;
     display:table;
+}
+#slogan_out{
+    margin: 0px;
+    width:100%;height:250px;
+    float:left;
+    background:#f7f7f7;
+    display: table;
 }
 .logo_and_slogan{
     display: table;
     padding:10px;
-    width:1040px;
+    width:700px;
+    text-align: center;
     margin-left: auto;
     margin-right:auto;
-}
-.logo_and_slogan div{
-    float:left;
     font-family: '微软雅黑';
-    font-size: 30px;
-    padding-right:50px;
-    color:#fff;
+    font-size: 35px;
+    font-weight: bold;
+    color:#2e2d2d;
+}
+.logo_and_slogan span{
+    font-size:20px;
+    color:#2e2d2d;
+    font-weight: lighter;
 }
 img{
     border:0px!important;
@@ -65,12 +81,13 @@ input{
     min-height: 400px;
 }
 .hero-unit{
-    width:520px;
+    width:1040px;
     float:left;
 }
 .hero-unit_right{
-    width:520px;
+    width:1040px;
     float:left;
+    margin-top:5px;
 }
 .hero_cell{
     width:520px;
@@ -365,19 +382,19 @@ div.logoo img{
 #artwork_thumb{
     position: relative;
     float: left;
-    width: 130px;
-    padding-left:5px;
-    border-left:1px solid #eee;
-    overflow: hidden;
-    height:650px;
+    width: 1040px;
+    display:table;
 }
 
 #artwork_main{
-    position: relative;
-    float: left;
     display:table;
-    float:left;
-    width:729px;
+    width:730px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:10px;
+    background: #fff;
+    float: none!important;
+    overflow: scroll;
 }
 #artwork_main div{
     display:table;
@@ -391,15 +408,13 @@ div.logoo img{
 }
 
 .image_thumbnail_active{
-/*    background: url('/templates/shop_template/images/download.png') repeat 0 0;*/
-    border-right:5px solid #2e2d2d!important;
 }
 .image_thumbnail:hover{
 }
 .image_thumbnail{
     margin: 5px 0px 5px 5px;
     width:120px;
-    border-right:5px solid #fff;
+    float:left;
 }
 .image_thumbnail img{
     width:120px!important;
@@ -419,11 +434,13 @@ div.logoo img{
 }
 #artwork_main_top{
     width:729px;
+    padding:10px;
     margin-bottom: 10px;
 }
 #artwork_main_down{
     width:729px;
     display: table!important;
+    padding:10px;
 }
 .artwork_main_small_in{
     border-right: 1px solid #ccc;
@@ -812,7 +829,8 @@ textarea.enabled{
 div,span,p{
 }
 h1,h2,h3,h4{
-    font-family:Calibri;
+    font-family:"微软雅黑",Calibri;
+    background: transparent;
 }
 b{
     font-family:Calibri!important;
@@ -1715,7 +1733,54 @@ button.close {
 
 
 .usermanager_ctrl{
-    width:150px;
+    width:100%;
+    left:0px;
+    top:41px;
+    background: #f7f7f7;
+    position:fixed;
+    z-index:9;
+    color:#2e2d2d;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    display:table;
+    padding:0px!important;
+}
+.usermanager_ctrl ul{
+    padding:0px;
+}
+.usermanager_ctrl li{
+    display:inline;
+    padding:10px 5px;
+}
+.usermanager_ctrl li.active{
+    border-bottom: 2px solid #2e2d2d;
+}
+.usermanager_ctrl a{
+    color:#2e2d2d;
+    font-size: 14px;
+    font-family: "微软雅黑";
+}
+.usermanager_ctrl a:hover{
+    color:#0e90d2;
+}
+.usermanager_ctrl_text a{
+    color:#fff;
+    font-size: 12px;
+    font-family: "微软雅黑";
+}
+.usermanager_ctrl_text a:hover{
+    color:#0e90d2;
+}
+.centerdiv{
+    width:1040px;
+    position:relative;
+    margin-left:auto;
+    margin-right:auto;
+    display:table;
+}
+.centerdiv div{
+    float:left;
+    display: table;
 }
 .usermanager_ctrl_heading{
     width:140px;
@@ -1725,24 +1790,27 @@ button.close {
     border-bottom: 1px solid #eee;
 }
 .usermanager_ctrl_text{
-    width:150px;
+    background: url('../images/transbackground.png') repeat;
+    top:89px;
+    left:0px;
+    width:100%;
+    display:none;
+    position:fixed;
+    z-index: 999;
+    padding:0px!important;
 }
 .usermanager_ctrl_text ul{
-    padding-left: 10px;
+    padding: 0px;
 }
 .usermanager_ctrl_text li{
     list-style: none;
-    color:#858282;
-    font-size: 14px;
-    padding:1px;
+    display:inline;
+    padding:10px 5px;
 }
-.usermanager_ctrl_text li a{
-    color:#858282;
+.usermanager_ctrl_text li.active a{
+    color: #00f800!important
 }
-.usermanager_ctrl_text li a:hover{
-    color:#2e2d2d;
-}
-.usermanager_ctrl_text li.active{
+/*.usermanager_ctrl_text li.active{
     border-left:3px solid #000;
     background: url('/templates/shop_template/images/edit_icon_invert.gif') no-repeat right #2e2d2d;
     padding: 5px;
@@ -1750,7 +1818,7 @@ button.close {
 .usermanager_ctrl_text li.active a{
     color:#fff;
     font-style: italic;
-}
+}*/
 
 
 #loadingbar{
@@ -2127,6 +2195,7 @@ td.image_thumbs img{
     display:none;
     width:100%;
     border-left:1px solid #8FBCDB;
+    z-index:99;
 }
 .vh_bar_div{
     width:100%;
@@ -3106,4 +3175,155 @@ font-family: "MuseoSlabLight";
 }
 .loadmore:hover{
     color:#2e2d2d;
+}
+.upload_page{
+    display:none;
+}
+.u_active{
+    display:table!important;
+}
+#page_1{
+    display:table;
+}
+#page1 div{
+    float: left;
+    width:100%;
+}
+#artwork_type_choice div{
+    margin: 10px;
+    background:#fff;
+    font-family: "微软雅黑";
+    padding:20px 30px;
+    font-size: 16px;
+    cursor: pointer;
+}
+#artwork_type_choice div:hover{
+    background:#2e2d2d;
+    color:#fff;
+}
+#gallery_bg{
+    position: fixed;
+    top:0px;
+    left:0px;
+    width:100%;
+    height:100%;
+    background:url('../images/transbackground.png') repeat;
+    z-index:9999999;
+    display:none;
+}
+#gallery_box{
+    width:510px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:60px;
+    background:#f7f7f7;
+/*    -webkit-box-shadow: 0px 0px 1px #2e2d2d;
+    -moz-box-shadow: 0px 0px 1px #2e2d2d;
+    box-shadow: 0px 0px 1px #2e2d2d;*/
+    display:table;
+}
+#gallery_box div{
+    float:left;
+}
+#artwork_bio div{
+    float:left;
+}
+#artwork_bio{
+    width:300px;
+}
+#show_artwork{
+    width:510px;
+}
+.show_gallery_right_cell{
+    width:490px;
+    padding:10px;
+    float:left;
+    background: #f7f7f7;
+}
+#close_it{
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 35px;
+    width: 16px;
+    height: 16px;
+    background: url('../images/icons.png') no-repeat -140px -638px;
+    overflow: hidden;
+    z-index:999999991;
+    cursor: pointer;
+}
+#title_author{
+    width:210px;
+    padding:10px;
+}
+#author_thumb{
+    width:50px;
+    top:200px;
+    position:fixed;
+}
+#author_thumb img{
+    width:50px;
+}
+.follow_button{
+    width:98px;
+    height:40px;
+    overflow: hidden;
+    display:block;
+    background: url('../images/login-24.png') no-repeat -225px -400px;
+}
+#display_container{
+    position:absolute;
+    top:0px;
+    left:0px;
+    display:none;
+    width:100%;
+    z-index:99999992;
+    overflow: scroll!important;
+}
+#main_content.modal-open {
+    overflow: hidden;
+}
+.long_button{
+    width:332px;
+    padding-top: 8px;
+    height:34px;
+    overflow: hidden;
+    display:block;
+    background: url('../images/login-24.png') no-repeat 0px -868px;
+    cursor: pointer;
+    font-size:16px!important;
+    font-weight: lighter!important;
+    color:#fff!important;
+}
+.long_button:hover{
+    background: url('../images/login-24.png') no-repeat 0px -922px;
+}
+.close_it_big{
+    position: absolute;
+    top:47px;
+    right:10px;
+    width:32px;
+    height:30px;
+    overflow: hidden;
+    display:block;
+    background: url('../images/login-24.png') no-repeat 0px -1291px;
+    cursor: pointer;
+}
+.close_it_big:hover{
+    background: url('../images/login-24.png') no-repeat -115px -1291px;
+}
+.close_it_big_alt{
+    position: fixed;
+    top:47px;
+    right:10px;
+    width:32px;
+    height:30px;
+    overflow: hidden;
+    display:none;
+    background: url('../images/login-24.png') no-repeat 0px -1291px;
+    cursor: pointer;
+    z-index:999999999;
+}
+.close_it_big_alt:hover{
+    background: url('../images/login-24.png') no-repeat -115px -1291px;
 }

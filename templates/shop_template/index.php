@@ -14,6 +14,7 @@ $locales = $lang->getLocale();
 <?php } ?>
 <html xmlns:wb=“http://open.weibo.com/wb” xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" >
 <head>
+    <meta name="google-site-verification" content="FfbOBQupWhLFX1tqA1hHrqXiqnFzhuCL585f5J4TF_E" />
 	<jdoc:include type="head" />
         <script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/js/shop.js" type="text/javascript"></script>
         <script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/js/jquery.masonry.min.js" type="text/javascript"></script>
@@ -53,6 +54,7 @@ $locales = $lang->getLocale();
                             <a href="<?php echo $this->baseurl ?>">
                                 <img src="<?php echo $this->baseurl ?>/templates/shop_template/images/grart_logo.gif" />
                             </a>
+                            <input type="hidden" id="logo_status" name="logo_status" value="0" />
                         </div>
 <!--                        <jdoc:include type="modules" name="position-1" style="none" />-->
                         <div class="navli" id="navig">
@@ -229,20 +231,33 @@ jQuery("#login_password").blur(function(){
     }
 });
 </script>
-<div style="position:absolute;left:0px;top:41px;width:100%;display: table;background:#81C6DD;z-index:-1;">
-    <div class="logo_and_slogan">
-                    <div>
-                        <a href="">
-                            <img src="/templates/shop_template/images/grart_logo.gif" alt="<?php echo JText::_('TPL_SHOP_TEMPLATE_SLOGO')?>" />
-                        </a>
-                    </div>
-                    <div>
-                        <?php echo JText::_('TPL_SHOP_TEMPLATE_SLOGAN')?>
-                    </div>
-      </div>
-</div>
+
     
-              
+<div id="body_out">
+    <?php if(JFactory::getUser()->id ==0){?>
+    <div id="slogan_out">
+        <div class="logo_and_slogan">
+                            <a href="">
+                                <img style="width:120px;" src="/templates/shop_template/images/grart_logo.gif" alt="<?php echo JText::_('TPL_SHOP_TEMPLATE_SLOGO')?>" />
+                            </a><br/>
+                            <?php echo JText::_('TPL_SHOP_TEMPLATE_SLOGAN')?><br/>
+                            <span><?php echo JText::_('TPL_SHOP_TEMPLATE_SLOGAN_SUBTITLE')?></span>
+                            <div class="long_button" id="quick_rego" style="margin-left:184px;margin-top:20px;"><?php echo JText::_('TPL_SHOP_TEMPLATE_QUICK_REGISTER')?></div>
+          </div>
+    </div>
+    <div class="close_it_big" id="close_slogan"></div>
+    <script>
+        jQuery('#close_slogan').click(function(){
+            jQuery('#close_slogan').css('display','none');
+            jQuery('#slogan_out').css('display','none');
+            jQuery('#logoimg').css('display','block');
+            jQuery('#logo_status').val('1');
+        });
+        jQuery("#quick_rego").click(function(){
+            document.location.href = '<?php echo juri::base().'index.php?option=com_opencart&route=account/register' ?>';
+        });
+    </script>
+    <?php } ?>
     <div class="body" id="main_content">
 <!--        <div class="alert alert-error">
                 <span>
@@ -258,6 +273,7 @@ jQuery("#login_password").blur(function(){
                     <jdoc:include type="modules" name="footer" />
                 </div> 
     </div>
+</div>       
 <div id="img_caption">
     <div id="img_caption_arrow"><img src="<?php echo JUri::base().'templates/shop_template/images/arrowup.png'?>" /></div>
     <div id="img_caption_text">Artworks</div>
@@ -274,7 +290,9 @@ jQuery(window).scroll(function() {
     if(y_scroll_pos > scroll_pos_test) {
         jQuery('#logoimg').show();
     }else{
-        jQuery('#logoimg').hide();
+        if(jQuery('#logo_status').val()=="0"){
+            jQuery('#logoimg').hide();
+        }
     }
     
     var scroll_artist_nav_pos_test = 210;

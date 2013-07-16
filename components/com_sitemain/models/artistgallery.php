@@ -97,5 +97,7 @@ class SitemainModelArtistgallery extends JModelItem
         return $images;
     }
     
+    
+    
 }
 ?>

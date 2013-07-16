@@ -18,10 +18,10 @@ class SitemainModelArticles extends JModelItem
 	$db = JFactory::getDbo();
         $query = $db->getQuery(true);
         $query = "SELECT cd.category_id, cd.name 
-                FROM joomla.oc_category c 
-                LEFT JOIN joomla.oc_category_description cd 
+                FROM oc_category c 
+                LEFT JOIN oc_category_description cd 
                 ON (c.category_id = cd.category_id) 
-                LEFT JOIN joomla.oc_category_to_store c2s 
+                LEFT JOIN oc_category_to_store c2s 
                 ON (c.category_id = c2s.category_id) 
                 WHERE c.parent_id = ".(string)$parent_id." AND c.status = '1' ORDER BY c.sort_order, LCASE(cd.name)";
         $db->setQuery((string)$query);

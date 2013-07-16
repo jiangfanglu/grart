@@ -166,14 +166,36 @@ class SitemainController extends JControllerLegacy
             
             $this -> createthumbnails($fileName,$uploadPathParent, 200);
             $this -> createthumbnails($fileName,$uploadPathParent, 600);
-            
+            $this -> createSmallPic($fileName,$uploadPathParent);
             //JFile::copy($uploadPath, JPATH_SITE.DS."components".DS."com_opencart".DS."image".DS."data".DS.$fileName);
             //$thumb_path = $imagefolder.DS.$user_id.DS.$size.DS.$filename;
             
             
         }
     }
-
+    
+    public function createSmallPic($filename,$imagefolder){
+        $user_id = (string)JFactory::getUser()->get('id');
+        $image = new JImage();
+        $image ->loadFile($imagefolder.DS.$filename);
+        $width = $image ->getWidth();
+        $height = $image ->getHeight();
+        $image2 = new JImage();
+        $image2 = $image ->resize($width*0.1, $height*0.1);
+        $thumb_path = $imagefolder.DS.$user_id.DS.'small'.$filename;
+        if(JFolder::exists($imagefolder.DS.$user_id.DS.'small')){
+            $image2 ->toFile($thumb_path);
+        }else{
+            if(JFolder::create($imagefolder.DS.$user_id.DS.'small',0777)){
+                $image2 ->toFile($thumb_path);
+            }else{
+                    echo JText::_( 'ERROR CREATING FOLDER' );
+                    return;
+            }
+        }
+        $image = null;
+        $image2 = null;
+    }
 
     public function createthumbnails($filename,$imagefolder, $size){
         $user_id = (string)JFactory::getUser()->get('id');
@@ -215,6 +237,8 @@ class SitemainController extends JControllerLegacy
                     return;
             }
         }
+        $image = null;
+        $image2 = null;
     }
     
     public function uploadfile(){
@@ -261,7 +285,7 @@ class SitemainController extends JControllerLegacy
         $uploadedFileNameParts = explode('.',$fileName);
         $uploadedFileExtension = array_pop($uploadedFileNameParts);
 
-        $validFileExts = explode(',', 'jpeg,jpg,png,gif');
+        $validFileExts = explode(',', 'jpeg,jpg,png,gif,tiff');
 
         //assume the extension is false until we know its ok
         $extOk = false;
@@ -625,6 +649,21 @@ class SitemainController extends JControllerLegacy
             echo "The comment has been deleted.";
         } else {
             echo "Error occurred. Please try later.";
+        }
+    }
+    
+    function shareartwork($title,$desc,$artwork_id,$filename){
+        $user = JFactory::getUser();
+        $media_url = JPATH_BASE.DS.'media'.DS.'uploaded_artwork'.DS.$user->id.DS.'200'.DS.$filename;
+        $url= "index.php?option=com_sitemain&view=artistgallery&artist_id=".$user->id."&artwork_id=".$artwork_id;
+        $params = $media_url.',';
+        $params .= $url.',';
+        $params .= $title.',';
+        $params .= $desc;
+        $receiver_ids = JRequest::getVar('$receiver_ids');
+        $model =& $this ->getModel('Upload');
+        if($model->shareWithFriends($user->id,$receiver_ids,$params)){
+            return true;
         }
     }
     
