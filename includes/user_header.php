@@ -23,12 +23,10 @@ if($arry[0]=='4'){
 <div id="usermenus" class="usermanager_ctrl">
     <div class="centerdiv">
         <?php if($userthumb_folder){ ?>
-    <!--        <div id="artist_thumb200" class="yesthumb">
+            <div id="artist_thumb200" class="yesthumb">
             <img src="/media/userthumbs/<?php echo $user -> id ?>/thumb_120.jpg" />
             </div>
-            <div class="edit_avtr"><a onclick="return switchDialog(1);" >
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </a></div>-->
+            <div class="edit_avtr" onclick="return switchDialog(1);"></div>
         <?php }else{ ?>
             <div id="artist_thumb200" class="nothumb">
             <a onclick="return switchDialog(1);" >Upload a photo</a>
@@ -43,6 +41,7 @@ if($arry[0]=='4'){
                 <li class="<?php echo $active[4] ?>" id="account_menu"><a><?php echo JText::_('COM_SITEMAIN_ACCOUNT')?></a></li>
             </ul>
         </div>
+            <div style="float:right;font-size: 20px;padding-top:8px;color:navy;"><?php echo JText::_('COM_SITENAIN_USER_CENTRE')?></div>
     </div>
 </div>
 <div id="shop_items" class="usermanager_ctrl_text">
@@ -85,3 +84,40 @@ jQuery('#shop_items').mouseleave(function(){
     jQuery('#shop_items').css('display', 'none');
 });
 </script>
+<div id="upload_avatar_photo_contianer">
+    <div id="upload_avartar">
+        <div style="width:100%;text-align: right;" class="close"><a onclick="return switchDialog(0);">x</a></div>
+        <form action="/index.php?option=com_sitemain&task=uploadavartphoto"  method="post" enctype="multipart/form-data">
+            <fieldset>
+                <legend>Choose a photo</legend>
+                <input type="file" id="Filedata" name="Filedata"  />
+            </fieldset>
+            <input class="submit_btn" type="submit" value="Upload" onclick="return showLoader();" />
+        </form>
+        <div id="ajax_loader2" style="display:none;" ><img src="<?php echo $this->baseurl ?>/templates/shop_template/images/ajax-loader.gif" /></div>
+    </div>
+</div>
+
+<script>
+    function switchDialog(status){
+        if(status == 1){
+            $('upload_avatar_photo_contianer').style.display = "block";
+            $('upload_avartar').style.display = "block";
+        }else{
+            $('upload_avatar_photo_contianer').style.display = "none";
+            $('upload_avartar').style.display = "none";
+        }
+        return false;
+    }
+    
+    function showLoader(){
+        $('ajax_loader2').style.display = 'block';
+        return true;
+    }
+</script>
+
+<div id="ajax_loader_gif" style="display:none;">
+    <div style="margin-left:auto;margin-right:auto;margin-top:50px;">
+    <img src="<?php echo $this->baseurl ?>/templates/shop_template/images/ajax-loader.gif" />
+    </div>
+</div>

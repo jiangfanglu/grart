@@ -46,7 +46,7 @@ body{
 }
 .logo_and_slogan{
     display: table;
-    padding:10px;
+    padding:50px 10px 10px 10px;
     width:700px;
     text-align: center;
     margin-left: auto;
@@ -157,7 +157,7 @@ input{
     height:40px;
     background: #f7f7f7;
     border-bottom: 1px solid #eee;
-    z-index:9999;
+    z-index:2;
 }
 
 .info_uploadaw{
@@ -210,8 +210,7 @@ input{
 div.logoo{
     padding-top:5px;
     float:left;
-    width:90px;
-    display:none;
+    width:120px;
 }
 div.logoo img{
     height:30px;
@@ -643,15 +642,18 @@ input[type='text'].artwork_widthedit{
     width:150px;
 }
 #artist_thumb200{
-    padding-left:15px;
-    padding-bottom: 15px;
+    padding:3px;
+    border:1px solid #ddd;
+    margin-right:20px;
+}
+#artist_thumb200 img{
+    width:40px;
 }
 .nothumb{
     background: #eee;
     color: #2e2d2d;
     text-align: center;
     padding-left:0px!important;
-    width:120px;
     height:60px;
     margin: 0px 0px 15px 15px;
     padding-top:50px!important;
@@ -665,8 +667,6 @@ input[type='text'].artwork_widthedit{
     color: #000;
 }
 .yesthumb{
-    width:120px;
-    height:120px;
     background: #fff;
 }
 #artist_thumb120{
@@ -736,7 +736,7 @@ textarea.enabled{
     display:none;
 }
 #upload_avatar_photo_contianer{
-    position:absolute;
+    position:fixed;
     top:0px;
     left:0px;
     margin:0px;
@@ -751,11 +751,11 @@ textarea.enabled{
 /*CROP IMAGE CSS*/
 #preview_out{
     overflow:hidden; 
-	margin:10px; 
-	border:1px solid #000000;
+    margin:10px; 
+    border:1px solid #000000;
     position:relative;
-	height:60px;
-	width:60px;
+    height:60px;
+    width:60px;
     float:left;
 }
 #preview_out img{
@@ -843,7 +843,7 @@ input.submit_btn{
     background: #2e2d2d;
     color:#fff;
     padding:5px 10px 5px 10px;
-    font-family: Calibri, Arial, Helvetica, sans-serif;
+    font-family: "微软雅黑",Calibri, Arial, Helvetica, sans-serif;
     cursor:pointer;
 }
 input:disabled.submit_btn{
@@ -866,7 +866,7 @@ input.submit_btn:hover{
     background: #ccc;
     color:#fff;
     padding:5px 10px 5px 10px;
-    font-family: Calibri, Arial, Helvetica, sans-serif;
+    font-family: "微软雅黑",Calibri, Arial, Helvetica, sans-serif;
 }
 input.delete_btn{
     border: 1px solid #228811;
@@ -876,7 +876,7 @@ input.delete_btn{
     background: #228811;
     color:#fff;
     padding:5px 10px 5px 10px;
-    font-family: Calibri, Arial, Helvetica, sans-serif;
+    font-family: "微软雅黑",Calibri, Arial, Helvetica, sans-serif;
 }
 input.delete_btn:hover{
     border: 1px solid #c09853;
@@ -886,7 +886,7 @@ input.delete_btn:hover{
     background: #c09853;
     color:#fff;
     padding:5px 10px 5px 10px;
-    font-family: Calibri, Arial, Helvetica, sans-serif;
+    font-family: "微软雅黑",Calibri, Arial, Helvetica, sans-serif;
 }
 ul.user_status_btns{
     padding-left:0px;
@@ -895,9 +895,9 @@ ul.user_status_btns{
     cursor: pointer;
     display: inline;
     list-style: none;
-    padding: 5px;
-    margin-right: 5px;
-    font-family: Calibri;
+    padding: 5px 2px;
+    margin-right: 0px;
+    font-family: "微软雅黑",Calibri;
     
 }
 .user_status_btns li.userlinklir img{
@@ -1174,9 +1174,19 @@ td{
     display:block;
     cursor: pointer;
 }
+#categories_breadcrumbs_outer{
+    position:fixed;
+    top:41px;
+    left:0px;
+    width:100%;
+    display:table;
+    background: #f7f7f7;
+    z-index:0;
+}
 #categories_breadcrumbs{
     width:1040px;
-    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 #categories_breadcrumbs a{
     color:#fff;
@@ -1205,13 +1215,12 @@ td{
     cursor: pointer;
     list-style: none;
     display: inline-block;
-    padding:10px 10px 5px 10px;
+    padding:0px 5px 0px 5px;
     text-align: center;
-    border-bottom: 1px solid #fff;
 }
 #categories_breadcrumbs li a{
     color: #2e2d2d;
-    font-size: 18px;
+    font-size: 14px;
     font-family: '微软雅黑';
 }
 .popular_artist{
@@ -1479,9 +1488,10 @@ input.search_text{
 /*    border-left: 1px solid #eee;*/
     font-family: Calibri, Arial, Helvetica, sans-serif;
     cursor: pointer;
+    background: url('/components/com_opencart/catalog/view/theme/myshoptheme/image/arrow-down.png') 70% 50% no-repeat;
 }
 .search_box_input_select_category:hover{
-    background: #2e2d2d;
+    background-color: #2e2d2d;
     color:#eee;
 }
 .search_btn{
@@ -1687,14 +1697,15 @@ button.close {
     width:150px;
 }
 .edit_avtr{
-    margin-left:-20px;
+    margin-top:28px;
+    margin-left: -40px;
     width:20px;
     height:20px;
-    background: url('/templates/shop_template/images/edit_icon.gif') no-repeat left;
+    background: url('/templates/shop_template/images/icons.png') no-repeat -243px -559px;
     cursor: pointer;
 }
 .edit_avtr:hover{
-    background: url('/templates/shop_template/images/edit_icon_grey.gif') no-repeat left;
+    background: url('/templates/shop_template/images/icons.png') no-repeat -243px -559px;
 }
 .edit_avtr a{
     width:15px;
@@ -2138,13 +2149,11 @@ select.grart{
     font-size: 14px;
 }
 .heading{
-    font-style: italic;
     padding: 5px 0px 5px 0px;
     font-size: 14px!important;
     font-weight: bold;
 }
 .acount_full_width .heading{
-    font-style: italic;
     padding: 5px 0px 5px 0px;
     width:849px;
     border-bottom: 1px solid #eee;

@@ -1,6 +1,5 @@
-<div class="divder_bg_dynamic">&nbsp;</div>
-<div>
-    <h4>Featured Product</h4>
+<div style="padding-top: 20px;">
+    <h4><?php echo $heading_title ?></h4>
     <?php foreach ($products as $product) { ?>
       
       <div style="width:180px;float:left;display:table;margin-bottom: 5px;">

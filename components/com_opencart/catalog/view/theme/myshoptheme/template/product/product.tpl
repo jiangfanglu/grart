@@ -1,6 +1,11 @@
 <?php echo $header; ?>
-    
+
      <div id="content">
+         
+         
+         
+         
+        
         <div class="cm_content_main">
               <div class="breadcrumb">
                 <?php foreach ($breadcrumbs as $breadcrumb) { ?>
@@ -18,7 +23,7 @@
     <?php if ($thumb || $images) { ?>
     <div class="left">
       <?php if ($thumb) { ?>
-      <div class="image"><a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" class="colorbox" rel="colorbox"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" id="image" /></a></div>
+      <div class="image product_main_thumb"><a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" class="colorbox" rel="colorbox"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" id="image" /></a></div>
       <?php } ?>
       <?php if ($images) { ?>
       <div class="image-additional">
@@ -51,7 +56,6 @@
             <div id="artist">
                 <?php if($artist) { ?>
                     <div id="artist_thumb_product" style="font-style:italic;">
-                        Created by
                         <a href="<?php echo JURI::base().'index.php?option=com_sitemain&view=artist&artist_id='.$artist['artist']->user_id ?>">
                             <img src="<?php echo JURI::base().'/media/userthumbs/'.$artist['artist']->user_id.'/thumb_120.jpg' ?>"
                                  title="<?php echo $artist['artist']->name ?>"/>
@@ -65,21 +69,21 @@
                 <div class="price">
                   
 
-<!--                  <?php if ($tax) { ?>
+                  <?php if ($tax) { ?>
                   <span class="price-tax"><?php echo $text_tax; ?> <?php echo $tax; ?></span>
-                  <?php } ?>-->
+                  <?php } ?>
                   
                   <?php if ($points) { ?>
                   <span class="reward"><small><?php echo $text_points; ?> <?php echo $points; ?></small></span>
                   <?php } ?>
                   
-<!--                  <?php if ($discounts) { ?>
+                  <?php if ($discounts) { ?>
                   <div class="discount">
                     <?php foreach ($discounts as $discount) { ?>
                     <?php echo sprintf($text_discount, $discount['quantity'], $discount['price']); ?>
                     <?php } ?>
                   </div>
-                  <?php } ?>-->
+                  <?php } ?>
                   
                 </div>
                 <?php } ?>
@@ -92,12 +96,12 @@
                       <?php foreach ($options as $option) { ?>
                           <?php if ($option['type'] == 'select') { ?>
                           <div id="option-<?php echo $option['product_option_id']; ?>" class="option">
-                            <?php if ($option['required']) { ?>
+<!--                            <?php if ($option['required']) { ?>
                             <span class="required">*</span>
                             <?php } ?>
-                            <b><?php echo $option['name']; ?>:</b>
-                            <select name="option_ext[<?php echo $option['product_option_id']; ?>]">
-                              <option value=""><?php echo $text_select; ?></option>
+                            <b><?php echo $option['name']; ?>:</b>-->
+                              <select name="option_ext[<?php echo $option['product_option_id']; ?>]" style="padding-right: 20px;">
+                              <option value=""><?php echo $option['name']; ?></option>
                               <?php foreach ($option['option_value'] as $option_value) { ?>
                               <option value="<?php echo $option_value['product_option_value_id']; ?>"><?php echo $option_value['name']; ?>
                               <?php if ($option_value['price']) { ?>
@@ -108,13 +112,35 @@
                             </select>
                           </div>
                           <?php } ?>
+                          
                           <?php if ($option['type'] == 'image') { ?>
                             <div id="option-<?php echo $option['product_option_id']; ?>" class="option">
                               <?php if ($option['required']) { ?>
                               <span class="required">*</span>
                               <?php } ?>
                               <b><?php echo $option['name']; ?>:</b><br />
-                                <table class="option-image">
+                              <ul class="product_options">
+                              <?php foreach ($option['option_value'] as $option_value) { ?>
+                                  <li id="option-value-<?php echo $option_value['product_option_value_id']; ?>" class="image_li_<?php echo $option['product_option_id']; ?>">
+                                      <img src="<?php echo $option_value['image']; ?>" alt="<?php echo $option_value['name'] . ($option_value['price'] ? ' ' . $option_value['price_prefix'] . $option_value['price'] : ''); ?>" title="<?php echo $option_value['name'] . ($option_value['price'] ? ' ' . $option_value['price_prefix'] . $option_value['price'] : ''); ?>"/>
+                                  </li>
+                                  <script>
+                                      jQuery("#option-value-<?php echo $option_value['product_option_value_id']; ?>").click(function(){
+                                            var tmp = jQuery(".image_li_<?php echo $option['product_option_id']; ?>");
+                                            tmp.each(function(i, obj) {
+                                                if(obj == document.getElementById("option-value-<?php echo $option_value['product_option_value_id']; ?>")){
+                                                    jQuery(this).css('border','2px solid #e40808');
+                                                }else{
+                                                    jQuery(this).css('border','2px solid #fff');
+                                                }
+                                            });
+                                            jQuery("#option_ext_<?php echo $option['product_option_id']; ?>").val("<?php echo $option_value['product_option_value_id']; ?>");
+                                        });
+                                  </script>
+                                  <?php } ?>
+                              </ul>
+                              <input type="hidden" name="option_ext_<?php echo $option['product_option_id']; ?>" value="1" id="option_ext_<?php echo $option['product_option_id']; ?>" />
+<!--                                <table class="option-image">
                                   <?php foreach ($option['option_value'] as $option_value) { ?>
                                   <tr>
                                     <td style="width: 1px;"><input type="radio" name="option_ext[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" id="option-value-<?php echo $option_value['product_option_value_id']; ?>" /></td>
@@ -126,7 +152,7 @@
                                       </label></td>
                                   </tr>
                                   <?php } ?>
-                                </table>
+                                </table>-->
                             </div>
                             <br />
                             <?php } ?>
@@ -149,27 +175,24 @@
                         <?php } ?>
                       </div>
             </div>
-<!--            <div id="sold">
+            <div id="sold">
                 <b>Sold:</b> <?php echo $total_sold ?>
-            </div>-->
+            </div>
         </div>
         <div class="tags"><b><?php echo $text_tags; ?></b>
                     <?php for ($i = 0; $i < count($tags); $i++) { ?>
-                    <?php if ($i < (count($tags) - 1)) { ?>
-                    <a href="<?php echo $tags[$i]['href']; ?>"><?php echo $tags[$i]['tag']; ?></a>,
-                    <?php } else { ?>
                     <a href="<?php echo $tags[$i]['href']; ?>"><?php echo $tags[$i]['tag']; ?></a>
-                    <?php } ?>
                     <?php } ?>
                   </div>
         <div class="product_info_divs_alt">
             <?php if ($review_status) { ?>
                 <div class="review">
                   <div><img src="catalog/view/theme/default/image/stars-<?php echo $rating; ?>.png" alt="<?php echo $reviews; ?>" />&nbsp;&nbsp;<a onclick="$('a[href=\'#tab-review\']').trigger('click');"><?php echo $reviews; ?></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a onclick="$('a[href=\'#tab-review\']').trigger('click');"><?php echo $text_write; ?></a></div>
-                  <div class="share"><!-- AddThis Button BEGIN -->
+                  <div class="share"> 
+<!--                      AddThis Button BEGIN -->
                     <div class="addthis_default_style"><a class="addthis_button_compact"><?php echo $text_share; ?></a> <a class="addthis_button_email"></a><a class="addthis_button_print"></a> <a class="addthis_button_facebook"></a> <a class="addthis_button_twitter"></a></div>
                     <script type="text/javascript" src="//s7.addthis.com/js/250/addthis_widget.js"></script> 
-                    <!-- AddThis Button END --> 
+<!--                     AddThis Button END  -->
                   </div>
                 </div>
                 <?php } ?>
@@ -257,7 +280,7 @@
         </div>
     </div>
 
-<script type="text/javascript"><!--
+<script type="text/javascript">
 click_id=0;
 $('#button-cart').bind('click', function() {
 	$.ajax({
@@ -299,12 +322,12 @@ $('#button-cart').bind('click', function() {
 		}
 	});
 });
-//--></script>
+//</script>
 <?php if ($options) { ?>
 <script type="text/javascript" src="catalog/view/javascript/jquery/ajaxupload.js"></script>
 <?php foreach ($options as $option) { ?>
 <?php if ($option['type'] == 'file') { ?>
-<script type="text/javascript"><!--
+<script type="text/javascript">
 new AjaxUpload('#button-option-<?php echo $option['product_option_id']; ?>', {
 	action: '<?php echo HTTP_SERVER;?>index.php?option=com_opencart&tmpl=component&route=product/product/upload',
 	name: 'file',
@@ -332,11 +355,11 @@ new AjaxUpload('#button-option-<?php echo $option['product_option_id']; ?>', {
 		$('.loading').remove();	
 	}
 });
-//--></script>
+//</script>
 <?php } ?>
 <?php } ?>
 <?php } ?>
-<script type="text/javascript"><!--
+<script type="text/javascript">
 $('#review .pagination a').live('click', function() {
 	$('#review').fadeOut('fast');
 		
@@ -398,12 +421,12 @@ $('#button-review').bind('click', function() {
 		}
 	});
 });
-//--></script> 
-<script type="text/javascript"><!--
+//</script> 
+<script type="text/javascript">
 $('#tabs a').tabs();
-//--></script> 
+//</script> 
 <script type="text/javascript" src="catalog/view/javascript/jquery/ui/jquery-ui-timepicker-addon.js"></script> 
-<script type="text/javascript"><!--
+<script type="text/javascript">
 if ($.browser.msie && $.browser.version == 6) {
 	$('.date, .datetime, .time').bgIframe();
 }
@@ -419,27 +442,4 @@ $('.colorbox').colorbox({
 	opacity: 0.5
 });
 });
-//--></script> 
-
-<!--Back ups-->
-<!--        <?php if ($option['type'] == 'image') { ?>
-        <div id="option-<?php echo $option['product_option_id']; ?>" class="option">
-          <?php if ($option['required']) { ?>
-          <span class="required">*</span>
-          <?php } ?>
-          <b><?php echo $option['name']; ?>:</b><br />
-            <table class="option-image">
-              <?php foreach ($option['option_value'] as $option_value) { ?>
-              <tr>
-                <td style="width: 1px;"><input type="radio" name="option_ext[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" id="option-value-<?php echo $option_value['product_option_value_id']; ?>" /></td>
-                <td><label for="option-value-<?php echo $option_value['product_option_value_id']; ?>"><img src="<?php echo $option_value['image']; ?>" alt="<?php echo $option_value['name'] . ($option_value['price'] ? ' ' . $option_value['price_prefix'] . $option_value['price'] : ''); ?>" /></label></td>
-                <td><label for="option-value-<?php echo $option_value['product_option_value_id']; ?>"><?php echo $option_value['name']; ?>
-                    <?php if ($option_value['price']) { ?>
-                    (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
-                    <?php } ?>
-                  </label></td>
-              </tr>
-              <?php } ?>
-            </table>
-        </div>
-        <?php } ?>-->
+//</script> 

@@ -30,6 +30,18 @@ class SitemainController extends JControllerLegacy
         //echo $getData['artwork_primary'];
     }
     
+    public function getuserthumb(){
+        $model = $this -> getModel('Artist');
+        $artist = $model-> getArtistByProductID(JRequest::getVar('product_id'));
+        $user_thumb_path = DS.'media'.DS.'userthumbs'.DS.(string)$artist->user_id;
+        if(JFolder::exists(JPATH_SITE.$user_thumb_path)){
+            $thumb_path = '/media/userthumbs/'.(string)$artist->user_id.'/thumb_120.jpg';
+        }else{
+            $thumb_path = '/templates/shop_template/images/default_thumb_120.jpg';
+        }
+        echo "<a href='".JRoute::_('index.php?option=com_sitemain&view=artist&artist_id='.$artist->user_id)."'><img src='$thumb_path' alt='$artist->name' title='$artist->name' /></a>";
+    }
+    
     public function setRedirectionSession(){
         $_SESSION['redirect_after_login']= urldecode(JRequest::getVar('current_url'));
         echo 'session_set';

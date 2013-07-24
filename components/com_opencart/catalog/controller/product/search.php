@@ -155,6 +155,7 @@ class ControllerProductSearch extends Controller {
 		$this->data['text_grid'] = $this->language->get('text_grid');		
 		$this->data['text_sort'] = $this->language->get('text_sort');
 		$this->data['text_limit'] = $this->language->get('text_limit');
+                $this->data['text_add_to_wishlist'] = $this->language->get('text_add_to_wishlist');
 		
 		$this->data['entry_search'] = $this->language->get('entry_search');
     	$this->data['entry_description'] = $this->language->get('entry_description');

@@ -6,6 +6,7 @@ if($current_user->guest){
 }
 $lang =& JFactory::getLanguage();
 $locales = $lang->getLocale();
+$app = JFactory::getApplication();
 ?>
 <?php if($locales[0]=="zh_CN.utf8"){ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//ZH" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -52,7 +53,7 @@ $locales = $lang->getLocale();
                     <div class="header_in_toleft">
                         <div class="logoo" id="logoimg">
                             <a href="<?php echo $this->baseurl ?>">
-                                <img src="<?php echo $this->baseurl ?>/templates/shop_template/images/grart_logo.gif" />
+                                <img src="<?php echo $this->baseurl ?>/templates/shop_template/images/logo_cn.png" />
                             </a>
                             <input type="hidden" id="logo_status" name="logo_status" value="0" />
                         </div>
@@ -234,12 +235,14 @@ jQuery("#login_password").blur(function(){
 
     
 <div id="body_out">
-    <?php if(JFactory::getUser()->id ==0){?>
+    <?php 
+    if(JFactory::getUser()->id ==0 && count($_GET)==0){
+        ?>
     <div id="slogan_out">
         <div class="logo_and_slogan">
-                            <a href="">
+<!--                            <a href="">
                                 <img style="width:120px;" src="/templates/shop_template/images/grart_logo.gif" alt="<?php echo JText::_('TPL_SHOP_TEMPLATE_SLOGO')?>" />
-                            </a><br/>
+                            </a><br/>-->
                             <?php echo JText::_('TPL_SHOP_TEMPLATE_SLOGAN')?><br/>
                             <span><?php echo JText::_('TPL_SHOP_TEMPLATE_SLOGAN_SUBTITLE')?></span>
                             <div class="long_button" id="quick_rego" style="margin-left:184px;margin-top:20px;"><?php echo JText::_('TPL_SHOP_TEMPLATE_QUICK_REGISTER')?></div>
@@ -287,13 +290,13 @@ jQuery(window).scroll(function() {
     var y_scroll_pos = window.pageYOffset;
     var scroll_pos_test = 40;             // set to whatever you want it to be
 
-    if(y_scroll_pos > scroll_pos_test) {
-        jQuery('#logoimg').show();
-    }else{
-        if(jQuery('#logo_status').val()=="0"){
-            jQuery('#logoimg').hide();
-        }
-    }
+//    if(y_scroll_pos > scroll_pos_test) {
+//        jQuery('#logoimg').show();
+//    }else{
+//        if(jQuery('#logo_status').val()=="0"){
+//            jQuery('#logoimg').hide();
+//        }
+//    }
     
     var scroll_artist_nav_pos_test = 210;
     if(y_scroll_pos > scroll_artist_nav_pos_test) {

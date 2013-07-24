@@ -37,46 +37,8 @@ DD_belatedPNG.fix('#logo img');
 </script>
 <![endif]-->
 <?php echo $google_analytics; ?>
-
-<div id="container">
-<?php if(DONT_SHOW_HEADER_JCART!="2"){?>
-<div id="header" <?php if(DONT_SHOW_HEADER_JCART=="1"){?> style="display:none;" <?php }?>>
-<input type="hidden" name="item_param_id" value="<?php echo ITEM_ID; ?>" />
-<input type="hidden" name="http_serv" value="<?php echo HTTP_SERVER; ?>" />
-  
-<?php if ($logo) { ?>
-<!--  <div id="logo"><a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" /></a></div>-->
-  <?php } ?>
-  <?php //echo $language; ?>
-  <?php //echo $currency; ?>
-  <?php echo $cart; ?>
-<!--  <div id="search">
-    <div class="button-search"></div>
-    <?php if ($filter_name) { ?>
-    <input type="text" name="filter_name" value="<?php echo $filter_name; ?>" />
-    <?php } else { ?>
-    <input type="text" name="filter_name" value="<?php echo $text_search; ?>" onclick="this.value = '';" onkeydown="this.style.color = '#000000';" />
-    <?php } ?>
-  </div>-->
-  <!--
-  <div id="welcome">
-    <?php if (!$logged) { ?>
-    <?php echo $text_welcome; ?>
-    <?php } else { ?>
-    <?php echo $text_logged; ?>
-    <?php } ?>
-  </div>
-  -->
-  <div class="links">
-      <!--<a href="<?php echo $home; ?>"><?php echo $text_home; ?></a>-->
-      <a href="<?php echo $wishlist; ?>" id="wishlist-total">
-          <?php echo $text_wishlist; ?></a>
-      <a href="<?php echo $shopping_cart; ?>"><?php echo $text_shopping_cart; ?></a>
-      <a href="<?php echo $checkout; ?>"><?php echo $text_checkout; ?></a>
-  </div>
-</div>
-<?php } ?>
 <?php if ($categories) { ?>
+<div id="categories_breadcrumbs_outer">
 <div id="categories_breadcrumbs" <?php if(DONT_SHOW_MENUS_JCART=="1"){?> style="display:none;" <?php }?>>
         <ul>
         <?php foreach ($categories as $category){?>
@@ -107,21 +69,22 @@ DD_belatedPNG.fix('#logo img');
             position = jQuery("#categorymenu_<?php echo $category['id']?>").position();
             //jQuery("#subcategory_<?php echo $category['id']?>").css('left', position.left);
             setChildLeft(jQuery("#categorymenu_<?php echo $category['id']?>"),jQuery("#subcategory_<?php echo $category['id']?>"));
-            jQuery("#subcategory_<?php echo $category['id']?>").css('top', position.top+40);
+            jQuery("#subcategory_<?php echo $category['id']?>").css('top', position.top+35);
+        }).mouseleave(function(){
+                setTimeout(function(){
+                    var target_child_hover = jQuery("#subcategory_<?php echo $category['id']?>").is(':hover');
+                    if(target_child_hover != true ){
+                        jQuery("#subcategory_<?php echo $category['id']?>").css('display', 'none');
+                    }
+                },100);
         });
         jQuery("#subcategory_<?php echo $category['id']?>").mouseleave(function(){
             jQuery("#subcategory_<?php echo $category['id']?>").css('display', 'none');
         });
+        
     </script>
         <?php } ?>
-        
-            <li class="divider">|</li>
         <?php } ?>
-            <li>
-                <a href="<?php echo JUri::base().'index.php?option=com_opencart' ?>">
-                    MORE
-                </a>
-            </li>
             </ul>
     </div>
   <script>
@@ -161,6 +124,46 @@ DD_belatedPNG.fix('#logo img');
     <?php } ?>
   </ul>
 </div>-->
+    </div>
 <?php } ?>
-    
+
+<div id="container">
+<?php if(DONT_SHOW_HEADER_JCART!="2"){?>
+<div id="header" <?php if(DONT_SHOW_HEADER_JCART=="1"){?> style="display:none;" <?php }?>>
+<input type="hidden" name="item_param_id" value="<?php echo ITEM_ID; ?>" />
+<input type="hidden" name="http_serv" value="<?php echo HTTP_SERVER; ?>" />
+  
+<?php if ($logo) { ?>
+<!--  <div id="logo"><a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" /></a></div>-->
+  <?php } ?>
+  <?php //echo $language; ?>
+  <?php //echo $currency; ?>
+  <?php //echo $cart; ?>
+<!--  <div id="search">
+    <div class="button-search"></div>
+    <?php if ($filter_name) { ?>
+    <input type="text" name="filter_name" value="<?php echo $filter_name; ?>" />
+    <?php } else { ?>
+    <input type="text" name="filter_name" value="<?php echo $text_search; ?>" onclick="this.value = '';" onkeydown="this.style.color = '#000000';" />
+    <?php } ?>
+  </div>-->
+  <!--
+  <div id="welcome">
+    <?php if (!$logged) { ?>
+    <?php echo $text_welcome; ?>
+    <?php } else { ?>
+    <?php echo $text_logged; ?>
+    <?php } ?>
+  </div>
+  -->
+<!--  <div class="links">
+      <a href="<?php echo $home; ?>"><?php echo $text_home; ?></a>
+      <a href="<?php echo $wishlist; ?>" id="wishlist-total">
+          <?php echo $text_wishlist; ?></a>
+      <a href="<?php echo $shopping_cart; ?>"><?php echo $text_shopping_cart; ?></a>
+      <a href="<?php echo $checkout; ?>"><?php echo $text_checkout; ?></a>
+  </div>-->
+</div>
+<?php } ?>
+<?php echo $cart; ?>
 <div id="notification"></div>

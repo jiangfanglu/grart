@@ -10,7 +10,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 //Uncomment and change as required the following settings if you need custom settings for multistore or connect to another opencart installation etc.
 
 //define('USE_JOOMLA_BUTTONS','0');
-//define('DONT_SHOW_HEADER_JCART','0');
+define('DONT_SHOW_HEADER_JCART','1');
 define('DONT_SHOW_FOOTER_JCART','1');
 define('DONT_SHOW_MENUS_JCART','0');
 //define('ENABLE_VQMOD_JCART','0');

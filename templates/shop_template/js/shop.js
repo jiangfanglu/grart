@@ -636,6 +636,27 @@ function addToWishList(http_serv_url,product_id) {
 		}
 	});
 }
+function addToWishList(product_id) {
+	jQuery.ajax({
+		url: http_serv_url + 'index.php?option=com_opencart&tmpl=component&route=account/wishlist/add',
+		type: 'post',
+		data: 'product_id=' + product_id,
+		dataType: 'json',
+		success: function(json) {
+			jQuery('.success, .warning, .attention, .information').remove();
+						
+			if (json['success']) {
+				jQuery('#notification').html('<div class="success" style="display: none;">' + json['success'] + '<img src="'+http_serv_url+'components/com_opencart/catalog/view/theme/default/image/close.png" alt="" class="close" /></div>');
+				
+				jQuery('.success').fadeIn('slow');
+				
+				jQuery('#wishlist-total').html(json['total']);
+				
+				jQuery('html, body').animate({ scrollTop: 0 }, 'slow');
+			}	
+		}
+	});
+}
 
 function saveNewPost(sender_id, content) {
     loaderlength = 0;
@@ -669,6 +690,14 @@ function loadJQContent(url,target){
         //jQuery("#"+target).append(html);
         jQuery("#"+target).html(html);
         jQuery('#loadingbar').css('display','none');
+    });
+}
+function loadJQContent_plain(url,target){
+    jQuery.ajax({
+        url: url
+    }).done(function(html){
+        //jQuery("#"+target).append(html);
+        jQuery("#"+target).html(html);
     });
 }
 function loadMootoolsContent(url,target){
@@ -749,3 +778,16 @@ function deleteComment(comment_id) {
 
     });
 }
+
+//tooltip js
+//$("someelement").mouseenter(function(){
+//    clearTimeout($(this).data('timeoutId'));
+//    $(this).find(".tooltip").fadeIn("slow");
+//}).mouseleave(function(){
+//    var someElement = $(this);
+//    var timeoutId = setTimeout(function(){
+//        someElement.find(".tooltip").fadeOut("slow");
+//    }, 650);
+//    //set the timeoutId, allowing us to clear this trigger if the mouse comes back over
+//    someElement.data('timeoutId', timeoutId); 
+//});

@@ -45,13 +45,9 @@ $doc->addScriptDeclaration( $ajax );
             ?>
         </span>
 </div>
-
+<?php include('/includes/user_header.php');?>
 <div class="full_screen" style="margin-top:10px;">
-    <div id="user_left_column">
-        <div id="artist_profile">
-                <?php echo $this -> loadTemplate('itemlist'); ?>
-        </div>
-    </div>
+
     <div id="user_right_column">
         <div id="profile_content">
             
@@ -59,41 +55,4 @@ $doc->addScriptDeclaration( $ajax );
     </div>
     
     
-</div>
-<div id="upload_avatar_photo_contianer">
-    <div id="upload_avartar">
-        <div style="width:100%;text-align: right;" class="close"><a onclick="return switchDialog(0);">x</a></div>
-        <form action="/index.php?option=com_sitemain&task=uploadavartphoto"  method="post" enctype="multipart/form-data">
-            <fieldset>
-                <legend>Choose a photo</legend>
-                <input type="file" id="Filedata" name="Filedata"  />
-            </fieldset>
-            <input class="submit_btn" type="submit" value="Upload" onclick="return showLoader();" />
-        </form>
-        <div id="ajax_loader2" style="display:none;" ><img src="<?php echo $this->baseurl ?>/templates/shop_template/images/ajax-loader.gif" /></div>
-    </div>
-</div>
-
-<script>
-    function switchDialog(status){
-        if(status == 1){
-            $('upload_avatar_photo_contianer').style.display = "block";
-            $('upload_avartar').style.display = "block";
-        }else{
-            $('upload_avatar_photo_contianer').style.display = "none";
-            $('upload_avartar').style.display = "none";
-        }
-        return false;
-    }
-    
-    function showLoader(){
-        $('ajax_loader2').style.display = 'block';
-        return true;
-    }
-</script>
-
-<div id="ajax_loader_gif" style="display:none;">
-    <div style="margin-left:auto;margin-right:auto;margin-top:50px;">
-    <img src="<?php echo $this->baseurl ?>/templates/shop_template/images/ajax-loader.gif" />
-    </div>
 </div>

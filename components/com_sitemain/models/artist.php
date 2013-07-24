@@ -44,6 +44,19 @@ class SitemainModelArtist extends JModelItem
         return $artist;
     }
     
+    public function getArtistByProductID($product_id){
+        $db = JFactory::getDbo();
+        $query = $db->getQuery(true);
+        $query = "SELECT user_id, u.name FROM #__users u
+                inner join #__artwork_info ai on ai.user_id = u.id 
+                right join #__artwork_publish ap on ai.id = ap.artwork_id 
+                where product_id = ".(string)$product_id;
+        $db->setQuery((string)$query);
+        $user = $db->loadObject();
+        return $user;
+    }
+
+
     public function getFollowerCount($user_id){
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);

@@ -311,7 +311,7 @@ function showSideBar(){
         $('vh_bar').style.display = 'none';
     }
 }
-    var position = xy('navig');
+    var position = xy('logoimg');
     //var width = (getScreenWidth()-1040)/2-20;
     $('vh_bar').style.left = position[0] + 1043+'px';
     //$('vh_bar').style.width = width + 'px';

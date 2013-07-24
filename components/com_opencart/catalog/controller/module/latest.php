@@ -71,7 +71,7 @@ class ControllerModuleLatest extends Controller {
 		} else {
 			$this->template = 'default/template/module/latest.tpl';
 		}
-
+                $this->data['text_add_to_wishlist'] = $this->language->get('text_add_to_wishlist');
                 $mod_var_name=basename(	__FILE__,".php")."_mod_data";
 		$this->data['template_dir'] = $this->template;
 		global $$mod_var_name;
