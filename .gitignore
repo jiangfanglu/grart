@@ -213,3 +213,6 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+/components/com_opencart/image/
+/components/com_opencart/system/
+!/tmp/

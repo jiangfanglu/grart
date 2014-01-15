@@ -8,7 +8,7 @@
 defined( '_JEXEC' ) or die( 'Restricted access' );
 class ModelCatalogOption extends Model {
 	public function addOption($data) {
-		$this->db->query("INSERT INTO `" . DB_PREFIX . "option` SET type = '" . $this->db->escape($data['type']) . "', sort_order = '" . (int)$data['sort_order'] . "'");
+		$this->db->query("INSERT INTO `" . DB_PREFIX . "option` SET option_type = '" . $this->db->escape($data['type']) . "', sort_order = '" . (int)$data['sort_order'] . "'");
 		
 		$option_id = $this->db->getLastId();
 		
@@ -30,7 +30,7 @@ class ModelCatalogOption extends Model {
 	}
 	
 	public function editOption($option_id, $data) {
-		$this->db->query("UPDATE `" . DB_PREFIX . "option` SET type = '" . $this->db->escape($data['type']) . "', sort_order = '" . (int)$data['sort_order'] . "' WHERE option_id = '" . (int)$option_id . "'");
+		$this->db->query("UPDATE `" . DB_PREFIX . "option` SET option_type = '" . $this->db->escape($data['type']) . "', sort_order = '" . (int)$data['sort_order'] . "' WHERE option_id = '" . (int)$option_id . "'");
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "option_description WHERE option_id = '" . (int)$option_id . "'");
 
@@ -80,7 +80,7 @@ class ModelCatalogOption extends Model {
 
 		$sort_data = array(
 			'od.name',
-			'o.type',
+			'o.option_type',
 			'o.sort_order'
 		);	
 		
