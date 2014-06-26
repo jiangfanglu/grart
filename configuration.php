@@ -12,9 +12,9 @@ class JConfig {
 	public $debug = '0';
 	public $debug_lang = '0';
 	public $dbtype = 'mysql';
-	public $host = '127.0.0.1';
-	public $user = 'root';
-	public $password = 'Gra55r00t!';
+	public $host = '10.161.55.22';
+	public $user = '1shooadmin';
+	public $password = '9BBO9ucD';
 	public $db = 'grart_cn';
 	public $dbprefix = 'z2act_';
 	public $live_site = '';
@@ -52,8 +52,8 @@ class JConfig {
 	public $sef_rewrite = '0';
 	public $sef_suffix = '0';
 	public $unicodeslugs = '0';	
-        public $log_path = '/home/fanglu/Sites/grart/logs';
-	public $tmp_path = '/home/fanglu/Sites/grart/tmp';
+        public $log_path = '/var/www/grart/logs';
+	public $tmp_path = '/var/www/grart/tmp';
 	public $lifetime = '120';
 	public $session_handler = 'database';
 	public $MetaRights = '';
